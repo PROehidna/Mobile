@@ -1,0 +1,36 @@
+.container{
+    max-width: 70%;
+    margin: auto;
+}
+.head p{ 
+    display: inline-block;
+    text-align: center;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 24px;
+    color: #fd7742;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    width: 15%;
+}
+.home{
+}
+.about-me{
+}
+.skills{
+}
+.portfolio{
+}
+.contact{
+}
+div{
+    left: 0px;
+    top: 0px;
+    background: #FFFFFF;
+}
+main{
+    background-color: #FFFFFF;
+    height: 20px;
+}
+footer{ 
+    background-color: #ffffff;
+}
