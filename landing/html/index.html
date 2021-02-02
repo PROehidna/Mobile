@@ -3,33 +3,37 @@
     <head>
         <meta charset="utf-8">
         <title>landing-test</title>
+        <link rel ="stylesheet" type="text/css" href="..\css\style.css">  
     </head>
+    <!--
     <body>
-        <nav>
-            <ul>
-                <dev><a href="#">Home</a>
-                <a href="#about_me">About me</a>
-                <a href="#skills">Skills</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#contacts">Contacts</a></dev>
-            </ul>
-        </nav>
+        <header>
+            <nav>
+                <ul>
+                    <div><a href="#">Home</a>
+                    <a href="#about_me">About me</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contacts">Contacts</a></div>
+                </ul>
+            </nav>
+        </header>
         <article>
-            <header>
+            <div>
                 <h2>Denis Novik</h2>
                 <img src="..\img\photo.png" alt="Denis Novik, photo"/>
                 <p>UX/UI designer</p>
                 <p>24 years old, Minsk</p>
-            </header>
+            </div>
             <div>
-                <section id="about_me">
+                <div id="about_me">
                     <h2>About me</h2>
                     <p>Hi, I'm Denis - UX/UI designer from Minsk. I'm interesrted in design and everything connected with it.</p>
                     <p>I'm studying ar courses "Web and mobile design interfaces" in IT-Academy.</p>
                     <p>Ready to implement excellent projects with wonderful people.</p>
                     <p></p>
-                </section>
-                <section id="skills">
+                </div>
+                <div id="skills">
                     <h2>Skills</h2>
                     <p>I work in suck programs as</p>
                     <p><img src="..\img\ps.png" alt="Adobe Photoshop"/></p>
@@ -68,8 +72,8 @@
                         <img src="..\img\unfilled_star.png" alt="5"/>
                     </p>
                     <p>Figma</p>
-                </section>
-                <section id="portfolio">
+                </div>
+                <div id="portfolio">
                     <h2>Portfolio</h2>
                     <p><img src="..\img\example_1.png"/></p>
                     <p>Onile fashion store - Homepage</p>
@@ -77,13 +81,13 @@
                     <p>Reebok Store - Concept</p>
                     <p><img src="..\img\example_3.png"/></p>
                     <p>Braun Landing Page - Concept</p>
-                </section>
-                <section id="contacts">
+                </div>
+                <div id="contacts">
                     <h2>Contacts</h2>
                     <p>Want to know more or just a chat?</p>
                     <p>You are welcome!</p>
                     <button>Send message</button>
-                </section>
+                </div>
             </div>
             <footer>
                  
@@ -96,5 +100,17 @@
             <p><img src="..\img\dribble.png"/></p>
             <p><small>Like me on LinkedIn, Instagram, Behance, Dribble</small></p>
         </footer>
+    </body>
+    -->
+    <body>
+        <div class="container">
+            <section class="head">
+                <p class="home"><a href="#">Home</a></p>
+                <p class="about-me"><a href="#about_me">About me</a></p>
+                <p class="skills"><a href="#skills">Skills</a></p>
+                <p class="portfolio"><a href="#portfolio">Portfolio</a></p>
+                <p class="contacts"><a href="#contacts">Contacts</a></p>
+            </section>
+        </div>
     </body>
 </html>
