@@ -26,7 +26,7 @@ table{
     margin: auto;
     margin-top: 80px;
     border: white;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(53, 53, 53);
     border: 8px solid;
     border-color: rgb(206, 82, 0);
     border-radius: 20px;
@@ -38,9 +38,15 @@ table{
     margin: auto;
     width: 600px;
     height: 600px;
-    background-color:rgb(167, 167, 167);
-    border: 1px solid rgb(255, 255, 255);
+    background-color:white;
+    border: 1px solid white;
     font-size: 30px;
+}
+.demo-inner{
+    margin: auto;
+    width: 592px;
+    height: 592px;
+    border: 4px solid black;
 }
 input{
     width: 240px;
@@ -48,6 +54,11 @@ input{
     font-size: 30px;
     font-style: italic;
     color:rgb(0, 0, 0);
+    border: 5px solid;
+    border-color: #ce5200;
+    border-radius: 25px;
+    font-display: Impact;
+    padding-left: 3px;
 }
 .calc{
     color:rgb(255, 255, 255);
