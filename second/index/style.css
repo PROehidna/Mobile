@@ -1,12 +1,67 @@
+header{
+    padding-bottom: 70px;
+}
 button{
-    width: 3em;
-    height: 3em;
-    font: Impact;
+    width: 60px;
+    height: 60px;
+    font-family: Impact;
+    font-size: 30px;
+    color: white;
+    border: 5px solid;
+    border-radius: 60px;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(206, 82, 0);
 }
 body{
     margin: 0 auto;
     text-align: center;
+    background-color: black;
 }
 table{
     margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.display{
+    margin: auto;
+    margin-top: 80px;
+    border: white;
+    background-color: rgb(255, 255, 255);
+    border: 8px solid;
+    border-color: rgb(206, 82, 0);
+    border-radius: 20px;
+    width: 278px;
+    padding-bottom: 15px;
+    padding-top: 30px;
+}
+.demo{
+    margin: auto;
+    width: 600px;
+    height: 600px;
+    background-color:rgb(167, 167, 167);
+    border: 1px solid rgb(255, 255, 255);
+    font-size: 30px;
+}
+input{
+    width: 240px;
+    height: 35px;
+    font-size: 30px;
+    font-style: italic;
+    color:rgb(0, 0, 0);
+}
+.calc{
+    color:rgb(255, 255, 255);
+    font-family: 'Times New Roman';
+}
+.first{
+    font-size: 50px;
+}
+.second{
+    font-size: 30px;
+}
+.third{
+    font-size: 25px;
+}
+.fourth{
+    font-size: 15px;
 }
