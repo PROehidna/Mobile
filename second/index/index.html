@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script> 
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script> 
   </head>
 
   <body>
@@ -13,32 +13,38 @@
       <div class = "demo-inner">
         <div class="display">
           <form name="form">
-            <input name="textView" class="textView" type="text">
+            <input name="textView" class="textView" type="text" id="part"  onkeyup="this.value = this.value.replace(/[^0-9].[0-9]/*+/-]/g,'')" readonly>
           </form>
           <table>
             <tr>
-              <td><button id = "num">7</button></td>
-              <td><button id = "num">8</button></td>
-              <td><button id = "num">9</button></td>
-              <td><button id = "mlt">*</button></td>
+              <td><button id = "btn" onclick="insert('*')">*</button></td>
+              <td><button id = "btn" onclick="insert('/')"">/</button></td>
+              <td><button id = "btn" onclick="insert('+')">+</button></td>
+              <td><button id = "btn" onclick="insert('-')">-</button></td>
             </tr>
             <tr>
-              <td><button id = "num">4</button></td>
-              <td><button id = "num">5</button></td>
-              <td><button id = "num">6</button></td>
-              <td><button id = "sub">-</button></td>
+              <td><button id = "btn" onclick="insert(7)">7</button></td>
+              <td><button id = "btn" onclick="insert(8)">8</button></td>
+              <td><button id = "btn" onclick="insert(9)">9</button></td>
+              <td><button id = "btn" onclick="clean()">C</button></td>
             </tr>
             <tr>
-              <td><button id = "num">1</button></td>
-              <td><button id = "num">2</button></td>
-              <td><button id = "num">3</button></td>
-              <td><button id = "add">+</button></td>
+              <td><button id = "btn" onclick="insert(4)">4</button></td>
+              <td><button id = "btn" onclick="insert(5)">5</button></td>
+              <td><button id = "btn" onclick="insert(6)">6</button></td>
+              <td><button id = "btn" onclick="backspace()">◄</button></td>
             </tr>
             <tr>
-              <td><button id = "num">C</button></td>
-              <td><button id = "num">0</button></td>
-              <td><button id = "equal">=</button></td>
-              <td><button id = "dvd">/</button></td>
+              <td><button id = "btn" onclick="insert(1)">1</button></td>
+              <td><button id = "btn" onclick="insert(2)">2</button></td>
+              <td><button id = "btn" onclick="insert(3)">3</button></td>
+              <td><button id = "btn" onclick="equal()">=</button></td>
+            </tr>
+            <tr>
+              <td><button id = "btn" onclick="insert(0)">0</button></td>
+              <td><button id = "btn" onclick="insert('00')">00</button></td>
+              <td><button id = "btn" onclick="insert('.')">.</button></td>
+              <td><button id = "btn" onclick="alert('загадка от жака-фреско. Сколько?')"></button></td>
             </tr>
           </table>
         </div>
