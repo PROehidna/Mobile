@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <body>
     <div id="app">
         <div class="grid">
-            <input @keyup.enter="calc()" type="text" v-model="result" placeholder="0" onkeyup="this.value = this.value.replace(/[^0-9/*+.-]/g,'')">
+            <input @keyup.enter="calc()" type="text" v-model="result" placeholder="0" onkeyup="this.value = this.value.replace(/[^0-9].[0-9]/*+/-]/g,'')">
             <button @click="input(num)" class="cell num"v-for="num in numbers"> {{num}}</button>
             <button @click="input(op)" class="cell op" v-for="op in operation">{{op}}</button>
             <button @click="clear()" class="cell op">C</button>
