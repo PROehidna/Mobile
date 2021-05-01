@@ -1,6 +1,6 @@
 <template>
     <Page  class="app">
-     <ActionBar title="Calculator"/>
+     <ActionBar class='header' title="Calculator"/>
          <GridLayout class="keyboard" columns="*, *, *, *" rows="*, *, *, *, *, *">
             <Label textWrap="true" class="result" v-model="result" row="0" col="0" colSpan="4"/>/>
             <Button  class="btn act" text="C" @tap="del()" row="1" col="0" colSpan="3"/>
@@ -26,6 +26,8 @@
 
 <script >
     let invalid = 'invalid input';
+    let operation = false;
+    let point = false;
     export default  {
     data() {
         return {
@@ -34,12 +36,29 @@
     },
     methods:{
             input: function(char){
+
                 this.result = this.result.toString();
                 if (this.result === invalid){
-                    this.result = '';   
+                    this.result = '';
                 }
-                this.result += char;
+
+                if ((char === '+' || char === '/' || char === '-' || char === '*') && operation === false){
+                    operation = true;
+                    point = false;
+                    this.result += char;
+                }
+                else if(char === '.' && point === false){
+                    operation = true;
+                    point = true;
+                    this.result += char;
+                }
+                else if ((char === '0' || char === '1' || char === '2' || char === '3' || char === '4' || 
+                          char === '5' || char === '6' || char === '7' || char === '8' || char === '9')){
+                    operation = false;                   
+                    this.result += char;
+                }
             },
+
             calc: function(){
                 try{
                     this.result = eval(this.result);
@@ -48,49 +67,53 @@
                   }
                 }
                 catch{
-                    this.result = invalid;
+                    this.result = 'invalid input';
                 }
             },
+            
             del: function(){
-                this.result = '';
+                this.result = ''
+                operation = false;
+                point = false;
             }
     }
   }
 </script>
 
 <style scoped>
+    .header{
+        background-color: #000;
+        color: #fff;
+    }
     .app{
-        background-color: #000000;
+        background-color: #373737;
     }
     .result{
-        background-color: #fff;
         text-align: right;
         font-size: 28px;
         overflow-wrap: break-word;
-        color: #000;
+        color: #fff;
+
     }
     .btn{
-        height: 20%;
-        width: 25%;
-        color: #0000ff;
-        background-color: #ffffff;
+        background-color: #fff;
+        color: #000;
+        width: 215px;
+        height: 180px;
     }
-    .btn[text="="]{
-        width: 50%
+    .btn[text='=']{
+        width: 470px;
     }
-    .btn[text="C"]{
-        width: 75%;
+    .btn[text='C']{
+        width: 720px;
     }
     .btn:active {
-        color: #fff;
-        background-color: #0000ff;
+         background-color: #55b562;
     }
     .act {
-        color: #fff;
-        background-color: #0000ff;
+        background-color: #55b562;
     }
     .act:active {
-        color: #0000ff;
-        background-color: #ffffff;
+        background-color: #fff;
     }
 </style>
