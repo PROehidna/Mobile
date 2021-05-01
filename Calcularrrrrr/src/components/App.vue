@@ -17,9 +17,9 @@
             <Button  class="btn" text="2" @tap="input('2')" row="4" col="1"/>
             <Button  class="btn" text="3" @tap="input('3')" row="4" col="2"/>
             <Button  class="btn act" text="+" @tap="input('+')" row="4" col="3"/>
-            <Button  class="btn" text="0" @tap="input('0')" row="5" col="0"/>
-            <Button  class="btn" text="." @tap="input('.')" row="5" col="1"/>
-            <Button  class="btn act" text="=" @tap="calc()" row="5" col="2" colSpan="2"/>
+            <Button  class="btn" text="0" @tap="input('0')" row="5" col="0" colSpan="2"/>
+            <Button  class="btn" text="." @tap="input('.')" row="5" col="2"/>
+            <Button  class="btn act" text="=" @tap="calc()" row="5" col="3" />
          </GridLayout>
     </Page>
 </template>
@@ -93,19 +93,21 @@
         font-size: 28px;
         overflow-wrap: break-word;
         color: #fff;
-
     }
     .btn{
         background-color: #fff;
         color: #000;
-        width: 215px;
-        height: 180px;
+        border: solid;
+        border-width: 2px;
+        border-color: #000;
+        width: 420px;
+        height: 420px;
     }
-    .btn[text='=']{
-        width: 470px;
+    .btn[text="C"]{
+        width: 1260px;
     }
-    .btn[text='C']{
-        width: 720px;
+    .btn[text='0']{
+        width: 840px;
     }
     .btn:active {
          background-color: #55b562;
