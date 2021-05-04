@@ -1,0 +1,18 @@
+<Page class="app">
+<ActionBar class='header' title="TODO PLG"/>
+<StackLayout>
+    <TextField class="input" v-model="newText" hint="write your task"  @returnPress= "newTask()"/>
+    <ScrollView orientation="horizontal">
+    <ListView  class="task" for="task in tasks">
+        <v-template>
+            <GridLayout columns="200%, 70%, 70%">
+                <label  class="task-text done" v-if="task.done" textWrap="true" col="0">{{task.title}}</label>
+                <label  class="task-text" v-else  @tap="edit(task.id, task.title)" textWrap="true" col="0">{{task.title}}</label>
+                <Button  class="btn check-btn" text="V" @tap="taskDone(task.id)" col="1"/>
+                <Button  class="btn remove-btn" text="X" @tap="remove(task.id)" col="2"/> 
+            </GridLayout>
+        </v-template>
+    </ListView>
+    </ScrollView>
+</StackLayout>
+</Page>
