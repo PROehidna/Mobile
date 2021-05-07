@@ -1,0 +1,29 @@
+.app{
+    background-color: #bebebe;
+}
+.forecast{
+  font-size: 20;
+  margin: 50px 70px;
+  padding: 20px;
+  padding-bottom: 90px;
+  background-color: #979797;
+  border-radius: 40%;
+}
+.img{
+  margin: 50px 32%;
+}
+.text{
+    margin: 50px auto;
+    background-color: #979797;
+    border-radius: 10%;
+    padding: 40px;
+}
+.city{
+  font-size: 30;
+  text-align: center;
+  height: 200px;
+  margin: 50px 70px;
+  padding: 50px;
+  border-radius: 40%;
+  background-color: #cf7200;
+}
