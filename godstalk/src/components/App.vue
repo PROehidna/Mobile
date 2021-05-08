@@ -10,7 +10,7 @@
             <label>ранг в гильдии:    {{this.clan_position}}</label>
             <label>здоровье:          {{this.health}}/{{this.max_health}}</label>
             <label>имя бога:          {{this.godname}}</label>
-            <label>девиз:             {{this.mottoo}}</label>
+            <label>девиз:             {{this.motto}}</label>
             <label>имя питомца:       {{this.pet.pet_name}}</label>
             <label>уровень питомца:   {{this.pet.pet_level}}</label>
             <label>тип питомца:       {{this.pet.pet_class}}</label>
