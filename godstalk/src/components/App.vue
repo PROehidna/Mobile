@@ -4,9 +4,9 @@
         <StackLayout>
           <StackLayout>
             <label>имя героя:         {{this.name}}</label>
-            <label>уровень:           {{this.level}}</label>
-            <label>пол:               {{this.gender}}</label>
-            <label>гильдия:           {{this.clan}}</label>
+            <label>уровень:            {{this.level}}</label>
+            <label>пол:                  {{this.gender}}</label>
+            <label>гильдия:            {{this.clan}}</label>
             <label>ранг в гильдии:    {{this.clan_position}}</label>
             <label>здоровье:          {{this.health}}/{{this.max_health}}</label>
             <label>имя бога:          {{this.godname}}</label>
