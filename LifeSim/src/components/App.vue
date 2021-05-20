@@ -1,14 +1,15 @@
 <template>
     <Page> 
-        <ActionBar title="Yet Another Life Sim"/>
-        <StackLayout>
-            <Button class="message" text="новая игра"/>
-            <Button class="message" text="продолжить"/>
-            <Button class="message" text="загрузить игру"/>            
-            <Button class="message" text="настройки"/>
-            <Button class="message" @tap="about()" text="о"/>
-            <Button class="message" @tap="closeApp()" text="выход"/>
-        </StackLayout>
+        <ActionBar title="добро пожаловать. снова."/>
+
+            <StackLayout>
+                <Button class="message" text=">новая игра"/>
+                <Button class="message" text=">продолжить"/>
+                <Button class="message" text=">загрузить игру"/>            
+                <Button class="message" text=">настройки"/>
+                <Button class="message" @tap="about()" text=">о"/>
+                <Button class="message" @tap="closeApp()" text=">выход"/>
+            </StackLayout>
     </Page>
 </template>
 
@@ -22,6 +23,7 @@ import * as application from "@nativescript/core/application";
       }
     },
     methods:{
+
       about() {
         alert(({
           title: "о",
@@ -29,6 +31,7 @@ import * as application from "@nativescript/core/application";
           okButtonText: "о"
         }));
       },
+
       closeApp() {
         if (application.android) {
           application.android.foregroundActivity.finish();
@@ -36,24 +39,29 @@ import * as application from "@nativescript/core/application";
           exit(0);
         }
       }
+
     }
   }
 </script>
 
 <style scoped>
+    TabView {
+        width: 200%;
+    }
+
     ActionBar {
-        background-color: #B9D7EA;
-        color: rgb(41, 41, 41);
+        background-color: #ff9113;
+        color: #fefefe;
     }
     Page {
-        background-color: #F7FBFC;
+        background-color: #eeeeee;
     }
     .message {
         vertical-align: center;
         text-align: center;
         font-size: 20;
-        color: #111111;
-        background-color: #D6E6F2;
+        color: #789922;
+        background-color: #dddddd;
         font-size: 16px;
         font-family: sans-serif;
         width: 75%;
