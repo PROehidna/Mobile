@@ -3,7 +3,7 @@
         <ActionBar title="добро пожаловать. снова."/>
 
             <StackLayout>
-                <Button class="message" text=">новая игра"/>
+                <Button class="message" @tap="startNewGame()" text=">новая игра"/>
                 <Button class="message" text=">продолжить"/>
                 <Button class="message" text=">загрузить игру"/>            
                 <Button class="message" text=">настройки"/>
@@ -14,6 +14,7 @@
 </template>
 
 <script >
+import Game from './Game'
 import * as application from "@nativescript/core/application";
 
   export default {
@@ -23,6 +24,12 @@ import * as application from "@nativescript/core/application";
       }
     },
     methods:{
+
+      startNewGame: function(event){
+        this.$showModal(Game, {
+          fullscreen: true,
+        })
+      },
 
       about() {
         alert(({
