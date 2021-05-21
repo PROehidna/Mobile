@@ -45,7 +45,7 @@ import * as application from "@nativescript/core/application";
 
       settings: function(event){
         this.$showModal(Settings,{
-          fullscreen: false,
+          fullscreen: true,
         })
       },
       
@@ -69,29 +69,4 @@ import * as application from "@nativescript/core/application";
   }
 </script>
 
-<style scoped>
-    TabView {
-        width: 200%;
-    }
-
-    ActionBar {
-        background-color: #ff9113;
-        color: #fefefe;
-    }
-    Page {
-        background-color: #eeeeee;
-    }
-    .button {
-        vertical-align: center;
-        text-align: center;
-        font-size: 20;
-        color: #789922;
-        background-color: #dddddd;
-        font-size: 16px;
-        font-family: sans-serif;
-        width: 75%;
-        height: 36rem;
-        margin-top: 12rem;
-        border-radius: 15%;
-    }
-</style>
+<style src="./style.css"></style>

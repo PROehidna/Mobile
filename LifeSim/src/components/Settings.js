@@ -1,33 +1,26 @@
-const Details = {
+const Settings = {
     template:
-        `<Page>
-            <StackLayout class="modalForm" width="100%">
-                <Label class="city" :text="city" width="100%" />
-                <ScrollView orientation="horizontal" scrollBarIndicatorVisible="true">
-                <StackLayout orientation="horizontal">
+        `<Frame>
+        <Page>
+        <ActionBar title="настроечку"/>
+        <StackLayout class="modalForm" width="100% ">
+                <ScrollView orientation="vertical" scrollBarIndicatorVisible="true">
+                <StackLayout orientation="vertical">
                     <Button text="o"/>
                     <Button text="o"/>
                     <Button text="o"/>
                     <Button text="o"/>
                     <Button text="o"/>
-                    <Button />
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
                     <Button text="o"/>
+                    <Button class="button" @tap="onCloseTap" text="Закрыть" />
                 </StackLayout>
                 </ScrollView>
-                <Button class="button" @tap="onCloseTap" text="Закрыть" />
                 
             </StackLayout>
-        </Page>`
+        </Page>
+        </Frame>
+        <style src="./style.css"></style>
+        `
     ,
     props: [],
     data() {
@@ -41,4 +34,4 @@ const Details = {
     }
 };
 
-export default Details;
+export default Settings;
