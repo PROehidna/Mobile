@@ -1,4 +1,4 @@
-
+//овер9000 айсикью - это когда половина функционала реализована в одном скрипте. 
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -8,7 +8,9 @@ const Game = {
         `<Frame>
         <Page>
             <ActionBar title="сап ананасы"/>
-            <StackLayout class="modalForm" width="100%">
+            <TabView :selectedIndex="selectedIndex" @selectedIndexChange="indexChange">
+            <TabViewItem title="статус">
+                <StackLayout class="modalForm" width="100%">
                 <Label class="city" :text="city" width="100%" />
                 <StackLayout>
                     <label>money - {{this.character.moneyRUB}}</label>
@@ -25,7 +27,22 @@ const Game = {
                     <Button class="button" text="enjoy" @tap="enjoy()"/>
                 </StackLayout>
                 <Button class="button" @tap="onCloseTap" text="Закрыть" />
-            </StackLayout>
+                </StackLayout>
+            </TabViewItem>
+            <TabViewItem title="Tab 2">
+              <label text="тута работа и че-то еще" />
+            </TabViewItem>
+            <TabViewItem title="Tab 3">
+              <label text="тута еда лечение и развлекуха" />
+            </TabViewItem>
+            <TabViewItem title="Tab 4">
+              <label text="тута еще функционал" />
+            </TabViewItem>
+            <TabViewItem title="Tab 6">
+              <label text="ОПАЧКИ, ЕЩЕ ОДНА КРИВАЯ ВКЛАДКА В ТЕХНОДЕМКЕ" />
+            </TabViewItem>
+          </TabView>
+
         </Page>
         </Frame>`
     ,
@@ -63,8 +80,8 @@ const Game = {
         },
 
         eat(){
-            this.dayCounter();
             if (this.character.moneyRUB >= 10){
+                this.dayCounter();
                 this.character.moneyRUB -=10;
                 this.character.hunger +=10;
                 if (this.character.hunger >= 100){
@@ -80,8 +97,8 @@ const Game = {
         },
 
         heal(){
-            this.dayCounter();
             if (this.character.moneyRUB >= 10){
+                this.dayCounter();
                 this.character.moneyRUB -=10;
                 this.character.health +=10;
                 if (this.character.health >= 100){
@@ -97,8 +114,8 @@ const Game = {
         },
 
         enjoy(){
-            this.dayCounter();
             if (this.character.moneyRUB >= 10){
+                this.dayCounter();
                 this.character.moneyRUB -=10;
                 this.character.mood +=10;
                 if (this.character.mood >= 100){

@@ -23,6 +23,14 @@ Progress {
     color: #ff9113;
     width: 90%;
 }
+
+TabView{
+    tab-background-color: #fcfcfc;
+    tab-text-color: #ff9113;
+    selected-tab-text-color: #ff6600;
+    android-selected-tab-highlight-color: #ff6600;
+}
+
 /*некоторые цвета, которые надо юзать 
 #FF6600 - заголовки (?) мб
 #FCFCFC - бэкграунд?
