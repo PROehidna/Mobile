@@ -3,7 +3,7 @@ import { Http } from '@nativescript/core'
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
-const Details = {
+const Game = {
     template:
         `<Page>
             <StackLayout class="modalForm" width="100%">
@@ -41,22 +41,6 @@ const Details = {
                      "Krasnoyarsk","Magadan","Khabarovsk"]
         };
     },
-    created() {
-        Http.getString('https://api.openweathermap.org/data/2.5/weather?q=' + this.cities[this.id] +',ru&lang=ru&units=metric&appid=7cf6bcfd03a403360f1840d82b65c1dc')
-            .then(
-                (result) => {
-                    this.result = JSON.parse(result)
-                    this.city = this.result.name
-                    this.weather = this.result.weather[0].description.capitalize()
-                    this.temp = this.result.main.temp
-                    this.feels_like = this.result.main.feels_like
-                    this.pressure = this.result.main.pressure
-                    this.humidity = this.result.main.humidity
-                    this.clouds = this.result.clouds.all
-                },
-                    e => { console.log(e) }
-            )
-    },
     methods:{
         onCloseTap: function(){
             this.$modal.close()
@@ -64,4 +48,4 @@ const Details = {
     }
 };
 
-export default Details;
+export default Game;

@@ -3,18 +3,19 @@
         <ActionBar title="добро пожаловать. снова."/>
 
             <StackLayout>
-                <Button class="message" @tap="startNewGame()" text=">новая игра"/>
-                <Button class="message" text=">продолжить"/>
-                <Button class="message" text=">загрузить игру"/>            
-                <Button class="message" text=">настройки"/>
-                <Button class="message" @tap="about()" text=">о"/>
-                <Button class="message" @tap="closeApp()" text=">выход"/>
+                <Button class="button" @tap="startNewGame()" text=">новая игра"/>
+                <Button class="button" @tap="startLastSave()" text=">продолжить"/>
+                <Button class="button" @tap="starAnySave()" text=">загрузить игру"/>            
+                <Button class="button" @tap="settings()" text=">настройки"/>
+                <Button class="button" @tap="about()" text=">о"/>
+                <Button class="button" @tap="closeApp()" text=">выход"/>
             </StackLayout>
     </Page>
 </template>
 
 <script >
-import Game from './Game'
+import Game from './Game';
+import Settings from './Settings';
 import * as application from "@nativescript/core/application";
 
   export default {
@@ -24,17 +25,34 @@ import * as application from "@nativescript/core/application";
       }
     },
     methods:{
-
       startNewGame: function(event){
         this.$showModal(Game, {
           fullscreen: true,
         })
       },
 
+      startLastSave: function(event){
+        this.$showModal(Game, {
+          fullscreen: true,
+        })  
+      },
+
+      starAnySave: function(event){
+        this.$showModal(Game, {
+          fullscreen: true,
+        })
+      },
+
+      settings: function(event){
+        this.$showModal(Settings,{
+          fullscreen: false,
+        })
+      },
+      
       about() {
         alert(({
           title: "о",
-          message: "о",
+          button: "о",
           okButtonText: "о"
         }));
       },
@@ -63,7 +81,7 @@ import * as application from "@nativescript/core/application";
     Page {
         background-color: #eeeeee;
     }
-    .message {
+    .button {
         vertical-align: center;
         text-align: center;
         font-size: 20;
