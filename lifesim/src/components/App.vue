@@ -1,32 +1,67 @@
 <template>
-    <Page>
-        <ActionBar title="Welcome to NativeScript-Vue!"/>
-        <GridLayout columns="*" rows="*">
-            <Label class="message" :text="msg" col="0" row="0"/>
-        </GridLayout>
+    <Page> 
+        <ActionBar title="добро пожаловать. снова."/>
+
+            <StackLayout>
+                <Button class="button" @tap="startNewGame()" text=">новая игра"/>
+                <Button class="button" @tap="startLastSave()" text=">продолжить"/>
+                <Button class="button" @tap="starAnySave()" text=">загрузить игру"/>            
+                <Button class="button" @tap="settings()" text=">настройки"/>
+                <Button class="button" @tap="about()" text=">о"/>
+                <Button class="button" @tap="closeApp()" text=">выход"/>
+            </StackLayout>
     </Page>
 </template>
 
 <script >
+import Game from './Game';
+import Settings from './Settings';
+import * as application from "@nativescript/core/application";
+
   export default {
     data() {
       return {
         msg: 'Hello World!'
       }
+    },
+    methods:{
+      startNewGame: function(event){
+        this.$showModal(Game, {
+          fullscreen: true,
+        })
+      },
+      startLastSave: function(event){
+        this.$showModal(Game, {
+          fullscreen: true,
+        })  
+      },
+      starAnySave: function(event){
+        this.$showModal(Game, {
+          fullscreen: true,
+        })
+      },
+      settings: function(event){
+        this.$showModal(Settings,{
+          fullscreen: true,
+        })
+      },
+      
+      about() {
+        alert(({
+          title: "о",
+          button: "о",
+          okButtonText: "о"
+        }));
+      },
+      closeApp() {
+        if (application.android) {
+          application.android.foregroundActivity.finish();
+        } else {
+          exit(0);
+        }
+      }
     }
   }
 </script>
 
-<style scoped>
-    ActionBar {
-        background-color: #53ba82;
-        color: #ffffff;
-    }
-
-    .message {
-        vertical-align: center;
-        text-align: center;
-        font-size: 20;
-        color: #333333;
-    }
-</style>
+<style src="./style.css"></style>

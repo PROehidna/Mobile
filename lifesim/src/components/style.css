@@ -1,0 +1,38 @@
+ActionBar {
+    background-color: #ff9113;
+    color: #fefefe;
+}
+Page {
+    background-color: #eeeeee;
+}
+.button {
+    vertical-align: center;
+    text-align: left;
+    font-size: 20;
+    color: #789922;
+    background-color: #dddddd;
+    font-size: 16px;
+    font-family: sans-serif;
+    width: 75%;
+    height: 36rem;
+    margin-top: 12rem;
+    border-radius: 5%;
+}
+Progress {
+    background-color: #ff6600;
+    color: #ff9113;
+    width: 90%;
+}
+
+TabView{
+    tab-background-color: #fcfcfc;
+    tab-text-color: #ff9113;
+    selected-tab-text-color: #ff6600;
+    android-selected-tab-highlight-color: #ff6600;
+}
+
+/*некоторые цвета, которые надо юзать 
+#FF6600 - заголовки (?) мб
+#FCFCFC - бэкграунд?
+#333333 - шрифт
+*/
