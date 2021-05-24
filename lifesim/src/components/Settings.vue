@@ -22,11 +22,6 @@
 
 <script>
 export default {
-    props: [],
-    data: function() {
-        return {
-        };
-    },
     methods:{
         onCloseTap: function(){
             this.$modal.close()

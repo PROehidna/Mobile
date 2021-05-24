@@ -4,33 +4,23 @@
             <ActionBar title="сап ананасы"/>
             <TabView :selectedIndex="0">
             <TabViewItem title="статус">
-                <StackLayout class="modalForm" width="100%">
-                <StackLayout>
-                    <label>{{moneyRUB}}</label>
-                    <label>health</label>
-                    <Progress :value="health" maxValue="100"/>
-                    <label>mood</label>
-                    <Progress :value="mood" maxValue="100"/>
-                    <label>hunger</label>
-                    <Progress :value="hunger" maxValue="100"/>
-                    <Button class="button" text="work" @tap="work()"/>
-                    <Button class="button" text="eat" @tap="eat()"/>
-                    <Button class="button" text="heal" @tap="heal()"/>
-                    <Button class="button" text="enjoy" @tap="enjoy()"/>
-                </StackLayout>
-                <Button class="button" @tap="onCloseTap" text="Закрыть" />
-                </StackLayout>
+              <status-tab></status-tab>
             </TabViewItem>
-            <TabViewItem title="Tab 2">
-              <label text="тута работа и че-то еще" />
+            <TabViewItem title="работа">
+              <work-tab></work-tab>
+
             </TabViewItem>
-            <TabViewItem title="Tab 3">
-              <label text="тута еда лечение и развлекуха" />
+            <TabViewItem title="потребности">
+              <needs-tab></needs-tab>
+
             </TabViewItem>
-            <TabViewItem title="Tab 4">
+            <TabViewItem title="недвижка">
               <label text="тута еще функционал" />
             </TabViewItem>
-            <TabViewItem title="Tab 6">
+            <TabViewItem title="транспорт">
+              <label text="ОПАЧКИ, ЕЩЕ ОДНА КРИВАЯ ВКЛАДКА В ТЕХНОДЕМКЕ" />
+            </TabViewItem>
+            <TabViewItem title="печка">
               <label text="ОПАЧКИ, ЕЩЕ ОДНА КРИВАЯ ВКЛАДКА В ТЕХНОДЕМКЕ" />
             </TabViewItem>
           </TabView>
@@ -39,18 +29,15 @@
 </template>
 
 <script>
+
 import {mapGetters, mapActions, mapMutations, mapState} from 'vuex';
+import StatusTab from './StatusTab.vue';
+import WorkTab from './WorkTab.vue';
+import NeedsTab from './NeedsTab.vue'
 
 export default {
+  components: { StatusTab, WorkTab, NeedsTab },
 
-    computed: mapGetters(['moneyRUB', 'health', 'hunger', 'mood']),
-    methods:{
-        onCloseTap: function(){
-          this.$modal.close()
-        },
-        work(){
-          this.$store.commit('work')
-        }
-    }
+
 }
 </script>
