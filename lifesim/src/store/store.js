@@ -19,13 +19,13 @@ export default new Vuex.Store({
         usd: 0,
       },
       education: {
+        basics: false,
         school: false,
         college: false,
         university: false,
-
       },
       estate:{
-
+        
       },
       transport: {
 
@@ -65,28 +65,56 @@ export default new Vuex.Store({
     },
     y(state){
       return state.date.y
+    },
+    basics(state){
+      return state.character.education.basics
     }
   },
 
   mutations: {
-    work(state){
+    newGameEasy(state){
+      state.character.params.age = 18;
+      state.character.params.health = 50;
+      state.character.params.hunger = 50;
+      state.character.params.mood = 50;
+      state.character.money.rub = 50;
+      state.character.money.usd = 0;
+      state.date.y = 2010;
+      state.date.m = 1;
+      state.date.d = 1;
+    },
+
+/*здесь и далее абсолютно идентичные функции, 
+которые надо реализовывать с входными параметрами и вся эта писанина сводится к ОДНОЙ функции, 
+но це - мутации вьюикса, поэтому сделать нормально не могу*/
+
+    workTierOne(state){
       state.character.money.rub += 50,
-      state.character.params.hunger -=5,
-      state.character.params.mood -=5,
-      state.character.params.health -=5
+      state.character.params.hunger -=10,
+      state.character.params.mood -=10,
+      state.character.params.health -=10
     },
-    eat(state){
+    eatTierOne(state){
       state.character.params.hunger +=10,
+      state.character.params.health -=5,
+      state.character.params.mood -=5,
       state.character.money.rub -=10
     },
-    heal(state){
+    healTierOne(state){
+      state.character.params.hunger -=5,
       state.character.params.health +=10,
+      state.character.params.mood -=5,
       state.character.money.rub -=10
     },
-    enjoy(state){
+    enjoyTierOne(state){
+      state.character.params.hunger -=5,
+      state.character.params.health -=5,
       state.character.params.mood +=10,
       state.character.money.rub -=10
     },
+
+
+
     dayCounter(state){
       state.date.d +=1
       if((state.date.d > 31 && (state.date.m == 1 || state.date.m == 3 ||state.date.m == 5 ||state.date.m == 7 ||state.date.m == 8 ||state.date.m == 10 ||state.date.m == 12)) || (state.date.d > 30 && (state.date.m == 4 || state.date.m == 6 || state.date.m == 9 || state.date.m == 11)) || (state.date.m == 2 && ((state.date.d > 29 && state.date.y % 4 == 0) || (state.date.d > 28 && state.date.y %4 !=0 )))) {
@@ -101,6 +129,6 @@ export default new Vuex.Store({
 
   },
   actions: {
-    /* экшоны не должны быть пустыми и вообще я вьюиксом неправильно пользуюсь потому что я быдло, но оно работатет */
+    /* экшоны не должны быть пустыми и вообще я вью-bксом неправильно пользуюсь потому что я быдло, но оно работатет */
   }
 });

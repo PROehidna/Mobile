@@ -30,6 +30,9 @@ TabView{
     selected-tab-text-color: #ff6600;
     android-selected-tab-highlight-color: #ff6600;
 }
+.rotated{
+    rotate: 270deg;
+}
 
 /*некоторые цвета, которые надо юзать 
 #FF6600 - заголовки (?) мб

@@ -3,7 +3,7 @@
         <ActionBar title="добро пожаловать. снова."/>
 
             <StackLayout>
-                <Button class="button" @tap="startNewGame()" text=">новая игра"/>
+                <Button class="button" @tap="startNewGame(), newGameEasy()" text=">новая игра"/>
                 <Button class="button" @tap="startLastSave()" text=">продолжить"/>
                 <Button class="button" @tap="starAnySave()" text=">загрузить игру"/>            
                 <Button class="button" @tap="settings()" text=">настройки"/>
@@ -14,17 +14,16 @@
 </template>
 
 <script >
+import {mapGetters, mapActions, mapMutations, mapState} from 'vuex';
+
 import Game from './Game';
 import Settings from './Settings';
 import * as application from "@nativescript/core/application";
 
   export default {
-    data() {
-      return {
-        msg: 'Hello World!'
-      }
-    },
+
     methods:{
+      ...mapMutations(['newGameEasy']),
       startNewGame: function(event){
         this.$showModal(Game, {
           fullscreen: true,
