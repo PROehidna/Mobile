@@ -1,8 +1,9 @@
 <template>
   <StackLayout class="modalForm" width="100%">
-    <StackLayout>
-      <!--DatePicker :disabled="true" :day='d' :month='m' :year='y' /-->
-        <label>сегодня {{d}} - {{m}} - {{y}}</label>
+    <ScrollView orientation='vertical' scrollBarIndicatorVisible="true">
+    <StackLayout orientation='vertical'>
+      <label>сегодня:</label>
+      <DatePicker isEnabled="false" :day='d' :month='m' :year='y' />
         <label>рубли: {{rub}} и доллары {{usd}}</label>
         <label>health</label>
         <Progress :value="health" maxValue="100"/>
@@ -10,9 +11,14 @@
         <Progress :value="mood" maxValue="100"/>
         <label>hunger</label>
         <Progress :value="hunger" maxValue="100"/>
-
+        <Button class="button" text=">work" @tap="workTierOne()"/>
+        <Button class="button" text=">heal" @tap="healTierOne()"/>
+        <Button class="button" text=">enjoy" @tap="enjoyTierOne()"/>
+        <Button class="button" text=">eat" @tap="eatTierOne()"/>
+        <Button class="button" @tap="onCloseTap" text="Закрыть" />
+          
     </StackLayout>
-    <Button class="button" @tap="onCloseTap" text="Закрыть" />
+    </ScrollView>
   </StackLayout>
 </template>
 
@@ -25,8 +31,7 @@ export default {
       onCloseTap: function(){
         this.$modal.close()
       },
-      ...mapMutations(['work', 'eat', 'heal', 'enjoy', 'dayCounter']),
-
+      ...mapActions(['workTierOne', 'eatTierOne', 'healTierOne', 'enjoyTierOne']),
   }
 }
 </script>

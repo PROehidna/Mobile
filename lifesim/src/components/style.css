@@ -30,7 +30,7 @@ TabView{
     selected-tab-text-color: #ff6600;
     android-selected-tab-highlight-color: #ff6600;
 }
-.rotated{
+#rotated{
     rotate: 270deg;
 }
 

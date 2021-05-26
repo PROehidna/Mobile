@@ -1,46 +1,35 @@
 <template>
-<StackLayout orientation="horizontal">
-  <StackLayout width='5%'>
-      <Progress class='rotated' :value="mood" maxValue="100" />
-  </StackLayout>
-  <StackLayout width='90%' orientation='vertical'>
+<GridLayout height='100%' columns='10, auto, 10' rows='*'>
+  <Progress height='100%' id='rotated' :value="mood" maxValue="100" />
+  <StackLayout col='1' width='90%' orientation='vertical'>
     <Progress :value="health" maxValue="100"/>
     <label text="тута работа и че-то еще" />
-    <Button class="button" text=">оче мали работа" @tap="workTierOne(), dayCounter()"/>
-    <Button v-if='basics' class="button" text=">мали работа" @tap="workTierTwo(), dayCounter()"/>
-    <Button v-else isEnabled='false' class="button" text=">мали работа" @tap="workTierTwo(), dayCounter()"/>
-    <Button class="button" text=">работа" @tap="workTierThree(), dayCounter()"/>
-    <Button class="button" text=">больче работа" @tap="workTierFour(), dayCounter()"/>
-    <Button class="button" text=">оче больче работа" @tap="workTierFive(), dayCounter()"/>
+    <Button class="button" text=">оче мали работа" @tap="workTierOne()"/>
+    <Button v-if='edTierTwo' class="button" text=">мали работа" @tap="workTierTwo()"/>
+    <Button v-else isEnabled='false' class="button" text=">мали работа" @tap="workTierTwo()"/>
+    <Button v-if='edTierThree' class="button" text=">работа" @tap="workTierThree()"/>
+    <Button v-else isEnabled='false' class="button" text=">работа" @tap="workTierThree()"/>
+    <Button v-if='edTierThree' class="button" text=">больче работа" @tap="workTierFour()"/>
+    <Button v-else isEnabled='false' class="button" text=">больче работа" @tap="workTierFour()"/>
+    <Button v-if='edTierFour' class="button" text=">оче больче работа" @tap="workTierFive()"/>
+    <Button v-else isEnabled='false' class="button" text=">оче больче работа" @tap="workTierFive()"/>
   </StackLayout>
-  <StackLayout height='500%' width='5%'>
-    <Progress class='rotated' :value="hunger" maxValue="100"/>
+  <StackLayout col='2'> //не работает растяжение
+    <Progress id='rotated' :value="hunger" maxValue="100"/>
   </StackLayout>
-</StackLayout>
+</GridLayout>
 </template>
 
 <script>
 import {mapGetters, mapActions, mapMutations, mapState} from 'vuex';
 
 export default {
-    computed: mapGetters(['rub', 'usd', 'health', 'hunger', 'mood', 'd', 'm', 'y', 'basics']),
+  computed: mapGetters(['rub', 'health', 'hunger', 'mood', 'edTierTwo', 'edTierThree', 'edTierFour', 'edTierFive']),
   methods:{
       onCloseTap: function(){
         this.$modal.close()
       },
-      ...mapMutations(['dayCounter']),
-        workTierOne(){
-        this.$store.commit('workTierOne');
-        if ((this.$store.getters.health | this.$store.getters.hunger | this.$store.getters.mood) <= 0 ){
-          this.$modal.close();
-          alert(({
-            title: "e",
-            button: "e",
-            okButtonText: "e"
-          }));
-        }
-      }
-
+      ...mapActions(['workTierOne', 'workTierTwo', 'workTierThree', 'workTierFour', 'workTierFive'])
   }
 }
 </script>
