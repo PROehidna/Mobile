@@ -28,8 +28,9 @@ TabView{
     tab-text-color: #ff9113;
     selected-tab-text-color: #ff6600;
     android-selected-tab-highlight-color: #ff6600;
-}
+} 
 #rotated{
+    /*не используется*/
     rotate: 270deg;
 }
 .text {
@@ -38,7 +39,13 @@ TabView{
     font-size: 12px;
     font-family: sans-serif;
 }
-
+.big-text {
+    text-align: center;
+    color: #ff6600;
+    font-size: 16px;
+    font-family: Impact;
+    font-weight: bold;
+}
 /*некоторые цвета, которые надо юзать 
 #FF6600 - заголовки (?) мб
 #FCFCFC - бэкграунд?

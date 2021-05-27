@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+const Toast = require('nativescript-toast');
 
 Vue.use(Vuex);
 
@@ -197,10 +198,13 @@ export default new Vuex.Store({
     workTierOne(ctx){
       if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
         alert(({
-          title: "e",
-          button: "e",
-          okButtonText: "e"
+          title: "игра оконочена",
+          button: "ок",
+          okButtonText: "ок"
         }));
+        ctx.state.character.params.health = 0;
+        ctx.state.character.params.hunger = 0;
+        ctx.state.character.params.mood = 0;
       }
       else{
         ctx.commit('rub', 50);
@@ -210,6 +214,83 @@ export default new Vuex.Store({
         ctx.commit('dayCounter');
       }
     },
+    workTierTwo(ctx){
+      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
+        alert(({
+          title: "игра оконочена",
+          button: "ок",
+          okButtonText: "ок"
+        }));
+        ctx.state.character.params.health = 0;
+        ctx.state.character.params.hunger = 0;
+        ctx.state.character.params.mood = 0;
+      }
+      else{
+        ctx.commit('rub', 50);
+        ctx.commit('health', -5);
+        ctx.commit('hunger', -5);
+        ctx.commit('mood', -5);
+        ctx.commit('dayCounter');
+      }
+    },
+    workTierThree(ctx){
+      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
+        alert(({
+          title: "игра оконочена",
+          button: "ок",
+          okButtonText: "ок"
+        }));
+        ctx.state.character.params.health = 0;
+        ctx.state.character.params.hunger = 0;
+        ctx.state.character.params.mood = 0;
+      }
+      else{
+        ctx.commit('rub', 50);
+        ctx.commit('health', -5);
+        ctx.commit('hunger', -5);
+        ctx.commit('mood', -5);
+        ctx.commit('dayCounter');
+      }
+    },
+    workTierFour(ctx){
+      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
+        alert(({
+          title: "игра оконочена",
+          button: "ок",
+          okButtonText: "ок"
+        }));
+        ctx.state.character.params.health = 0;
+        ctx.state.character.params.hunger = 0;
+        ctx.state.character.params.mood = 0;
+      }
+      else{
+        ctx.commit('rub', 50);
+        ctx.commit('health', -5);
+        ctx.commit('hunger', -5);
+        ctx.commit('mood', -5);
+        ctx.commit('dayCounter');
+      }
+    },
+    workTierFive(ctx){
+      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
+        alert(({
+          title: "игра оконочена",
+          button: "ок",
+          okButtonText: "ок"
+        }));
+        ctx.state.character.params.health = 0;
+        ctx.state.character.params.hunger = 0;
+        ctx.state.character.params.mood = 0;
+      }
+      else{
+        ctx.commit('rub', 50);
+        ctx.commit('health', -5);
+        ctx.commit('hunger', -5);
+        ctx.commit('mood', -5);
+        ctx.commit('dayCounter');
+      }
+    },
+
     eatTierOne(ctx){
       if(ctx.state.character.money.rub >= 10){
         ctx.commit('rub', -10);
@@ -219,7 +300,7 @@ export default new Vuex.Store({
         ctx.commit('dayCounter');
         if(ctx.state.character.params.hunger >= 100){
           ctx.state.character.params.hunger = 100;
-        };
+        }
       }
       else{
         alert(({
@@ -227,60 +308,6 @@ export default new Vuex.Store({
           button: "e",
           okButtonText: "ладно"
         }));
-      }
-    },
-    healTierOne(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', +5);
-        ctx.commit('hunger', -1);
-        ctx.commit('mood', -1);
-        ctx.commit('dayCounter');
-        if(ctx.state.character.params.health >= 100){
-          ctx.state.character.params.health = 100;
-        };
-      }
-      else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
-      }
-    },
-    enjoyTierOne(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', -1);
-        ctx.commit('hunger', -1);
-        ctx.commit('mood', +5);
-        ctx.commit('dayCounter');
-        if(ctx.state.character.params.mood >= 100){
-          ctx.state.character.params.mood = 100;
-        };
-      }
-      else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
-      }
-    },
-    workTierTwo(ctx){
-      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        alert(({
-          title: "e",
-          button: "e",
-          okButtonText: "e"
-        }));
-      }
-      else{
-        ctx.commit('rub', 50);
-        ctx.commit('health', -5);
-        ctx.commit('hunger', -5);
-        ctx.commit('mood', -5);
-        ctx.commit('dayCounter');
       }
     },
     eatTierTwo(ctx){
@@ -292,6 +319,83 @@ export default new Vuex.Store({
         ctx.commit('dayCounter');
         if(ctx.state.character.params.hunger >= 100){
           ctx.state.character.params.hunger = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    eatTierThree(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', +5);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.hunger >= 100){
+          ctx.state.character.params.hunger = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    eatTierFour(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', +5);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.hunger >= 100){
+          ctx.state.character.params.hunger = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    eatTierFive(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', +5);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.hunger >= 100){
+          ctx.state.character.params.hunger = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+
+    healTierOne(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', +5);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.health >= 100){
+          ctx.state.character.params.health = 100;
         };
       }
       else{
@@ -321,60 +425,6 @@ export default new Vuex.Store({
         }));
       }
     },
-    enjoyTierTwo(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', -1);
-        ctx.commit('hunger', -1);
-        ctx.commit('mood', +5);
-        ctx.commit('dayCounter');
-        if(ctx.state.character.params.mood >= 100){
-          ctx.state.character.params.mood = 100;
-        };
-      }
-      else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
-      }
-    },
-    workTierThree(ctx){
-      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        alert(({
-          title: "e",
-          button: "e",
-          okButtonText: "e"
-        }));
-      }
-      else{
-        ctx.commit('rub', 50);
-        ctx.commit('health', -5);
-        ctx.commit('hunger', -5);
-        ctx.commit('mood', -5);
-        ctx.commit('dayCounter');
-      }
-    },
-    eatTierThree(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', -1);
-        ctx.commit('hunger', +5);
-        ctx.commit('mood', -1);
-        ctx.commit('dayCounter');
-        if(ctx.state.character.params.hunger >= 100){
-          ctx.state.character.params.hunger = 100;
-        };
-      }
-      else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
-      }
-    },
     healTierThree(ctx){
       if(ctx.state.character.money.rub >= 10){
         ctx.commit('rub', -10);
@@ -384,60 +434,6 @@ export default new Vuex.Store({
         ctx.commit('dayCounter');
         if(ctx.state.character.params.health >= 100){
           ctx.state.character.params.health = 100;
-        };
-      }
-      else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
-      }
-    },
-    enjoyTierThree(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', -1);
-        ctx.commit('hunger', -1);
-        ctx.commit('mood', +5);
-        ctx.commit('dayCounter');
-        if(ctx.state.character.params.mood >= 100){
-          ctx.state.character.params.mood = 100;
-        };
-      }
-      else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
-      }
-    },
-    workTierFour(ctx){
-      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        alert(({
-          title: "e",
-          button: "e",
-          okButtonText: "e"
-        }));
-      }
-      else{
-        ctx.commit('rub', 50);
-        ctx.commit('health', -5);
-        ctx.commit('hunger', -5);
-        ctx.commit('mood', -5);
-        ctx.commit('dayCounter');
-      }
-    },
-    eatTierFour(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', -1);
-        ctx.commit('hunger', +5);
-        ctx.commit('mood', -1);
-        ctx.commit('dayCounter');
-        if(ctx.state.character.params.hunger >= 100){
-          ctx.state.character.params.hunger = 100;
         };
       }
       else{
@@ -467,7 +463,46 @@ export default new Vuex.Store({
         }));
       }
     },
-    enjoyTierFour(ctx){
+    healTierFive(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', +5);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.health >= 100){
+          ctx.state.character.params.health = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+
+    enjoyTierOne(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', +5);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.mood >= 100){
+          ctx.state.character.params.mood = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    }, 
+    enjoyTierTwo(ctx){
       if(ctx.state.character.money.rub >= 10){
         ctx.commit('rub', -10);
         ctx.commit('health', -1);
@@ -486,31 +521,15 @@ export default new Vuex.Store({
         }));
       }
     },
-    workTierFive(ctx){
-      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        alert(({
-          title: "e",
-          button: "e",
-          okButtonText: "e"
-        }));
-      }
-      else{
-        ctx.commit('rub', 50);
-        ctx.commit('health', -5);
-        ctx.commit('hunger', -5);
-        ctx.commit('mood', -5);
-        ctx.commit('dayCounter');
-      }
-    },
-    eatTierFive(ctx){
+    enjoyTierThree(ctx){
       if(ctx.state.character.money.rub >= 10){
         ctx.commit('rub', -10);
         ctx.commit('health', -1);
-        ctx.commit('hunger', +5);
-        ctx.commit('mood', -1);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', +5);
         ctx.commit('dayCounter');
-        if(ctx.state.character.params.hunger >= 100){
-          ctx.state.character.params.hunger = 100;
+        if(ctx.state.character.params.mood >= 100){
+          ctx.state.character.params.mood = 100;
         };
       }
       else{
@@ -521,15 +540,15 @@ export default new Vuex.Store({
         }));
       }
     },
-    healTierFive(ctx){
+    enjoyTierFour(ctx){
       if(ctx.state.character.money.rub >= 10){
         ctx.commit('rub', -10);
-        ctx.commit('health', +5);
+        ctx.commit('health', -1);
         ctx.commit('hunger', -1);
-        ctx.commit('mood', -1);
+        ctx.commit('mood', +5);
         ctx.commit('dayCounter');
-        if(ctx.state.character.params.health >= 100){
-          ctx.state.character.params.health = 100;
+        if(ctx.state.character.params.mood >= 100){
+          ctx.state.character.params.mood = 100;
         };
       }
       else{
@@ -559,6 +578,7 @@ export default new Vuex.Store({
         }));
       }
     },
+
     edTierTwo(ctx){
       if(ctx.state.character.money.rub >= 1000){
         ctx.commit('rub', -10);
@@ -571,8 +591,53 @@ export default new Vuex.Store({
           okButtonText: "ладно"
         }));
       }
+    },
+    edTierThree(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('edTierTwo');
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    edTierFour(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('edTierTwo');
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    edTierFive(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('edTierTwo');
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+   
+    showRub(ctx){
+      const rubInfo = Toast.makeText('остаток средств ' + ctx.state.character.money.rub + ' рублей', 'short');
+      rubInfo.setDuration(10)
+      
+      rubInfo.show();
     }
-    
 },
   modules: {
 
