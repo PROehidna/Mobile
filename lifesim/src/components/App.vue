@@ -3,7 +3,7 @@
         <ActionBar title="добро пожаловать. снова."/>
 
             <StackLayout>
-                <Button class="button" @tap="startNewGame(), newGameEasy()" text=">новая игра"/>
+                <Button class="button" @tap="startNewGame(), newGameNormal()" text=">новая игра"/>
                 <Button class="button" @tap="startLastSave()" text=">продолжить"/>
                 <Button class="button" @tap="starAnySave()" text=">загрузить игру"/>            
                 <Button class="button" @tap="settings()" text=">настройки"/>
@@ -23,7 +23,7 @@ import * as application from "@nativescript/core/application";
   export default {
 
     methods:{
-      ...mapMutations(['newGameEasy']),
+      ...mapMutations(['newGameNormal']),
       startNewGame: function(event){
         this.$showModal(Game, {
           fullscreen: true,

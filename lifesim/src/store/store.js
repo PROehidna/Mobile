@@ -47,7 +47,6 @@ export default new Vuex.Store({
       d: 1,
     }
   },
-
   getters: {
     rub(state) {
       return state.character.money.rub
@@ -63,6 +62,9 @@ export default new Vuex.Store({
     },
     mood(state) {
       return state.character.params.mood
+    },
+    age(state){
+      return state.character.params.age
     },
     d(state){
       return state.date.d
@@ -109,21 +111,48 @@ export default new Vuex.Store({
     bTierFive(state){
       return state.character.business.tierFive
     },
+    tTierTwo(state){
+      return state.character.transport.tierTwo
+    },
+    tTierThree(state){
+      return state.character.transport.tierThree
+    },
+    tTierFour(state){
+      return state.character.transport.tierFour
+    },
+    tTierFive(state){
+      return state.character.transport.tierFive
+    },
   },
-
   mutations: {
-    newGameEasy(state){
+    /* ненормальные мутации,где меняются все данные в мутации - отвечают за уровни сложности (если сделаю)) */
+    newGameNormal(state){
       state.character.params.age = 18;
       state.character.params.health = 50;
       state.character.params.hunger = 50;
       state.character.params.mood = 50;
       state.character.money.rub = 50;
       state.character.money.usd = 0;
+      state.character.education.tierTwo = false;
+      state.character.education.tierThree = false;
+      state.character.education.tierFour = false;
+      state.character.education.tierFive = false;
+      state.character.transport.tierTwo = false;
+      state.character.transport.tierThree = false;
+      state.character.transport.tierFour = false;
+      state.character.transport.tierFive = false;
+      state.character.estate.tierTwo = false;
+      state.character.estate.tierThree = false;
+      state.character.estate.tierFour = false;
+      state.character.estate.tierFive = false;
+      state.character.business.tierTwo = false;
+      state.character.business.tierThree = false;
+      state.character.business.tierFour = false;
+      state.character.business.tierFive = false;
       state.date.y = 2010;
       state.date.m = 1;
       state.date.d = 1;
     },
-
     rub(state, a){
       state.character.money.rub += a
     },
@@ -147,9 +176,23 @@ export default new Vuex.Store({
           state.character.params.age +=1;
         }
       }
-    }
+    },
+    edTierTwo(state){
+      state.character.education.tierTwo = true
+    },
+    edTierThree(state){
+      state.character.education.tierThree= true
+    },
+    edTierFour(state){
+      state.character.education.tierFour = true
+    },
+    edTierFive(state){
+      state.character.education.tierFive= true
+    },
 
   },
+
+//если разберусь как подключить дочерние экшоны к родительскому состоянию - тогда определенно точно все розобью на модули
   actions: {
     workTierOne(ctx){
       if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
@@ -223,10 +266,314 @@ export default new Vuex.Store({
           okButtonText: "ладно"
         }));
       }
+    },
+    workTierTwo(ctx){
+      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
+        alert(({
+          title: "e",
+          button: "e",
+          okButtonText: "e"
+        }));
+      }
+      else{
+        ctx.commit('rub', 50);
+        ctx.commit('health', -5);
+        ctx.commit('hunger', -5);
+        ctx.commit('mood', -5);
+        ctx.commit('dayCounter');
+      }
+    },
+    eatTierTwo(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', +5);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.hunger >= 100){
+          ctx.state.character.params.hunger = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    healTierTwo(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', +5);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.health >= 100){
+          ctx.state.character.params.health = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    enjoyTierTwo(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', +5);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.mood >= 100){
+          ctx.state.character.params.mood = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    workTierThree(ctx){
+      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
+        alert(({
+          title: "e",
+          button: "e",
+          okButtonText: "e"
+        }));
+      }
+      else{
+        ctx.commit('rub', 50);
+        ctx.commit('health', -5);
+        ctx.commit('hunger', -5);
+        ctx.commit('mood', -5);
+        ctx.commit('dayCounter');
+      }
+    },
+    eatTierThree(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', +5);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.hunger >= 100){
+          ctx.state.character.params.hunger = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    healTierThree(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', +5);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.health >= 100){
+          ctx.state.character.params.health = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    enjoyTierThree(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', +5);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.mood >= 100){
+          ctx.state.character.params.mood = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    workTierFour(ctx){
+      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
+        alert(({
+          title: "e",
+          button: "e",
+          okButtonText: "e"
+        }));
+      }
+      else{
+        ctx.commit('rub', 50);
+        ctx.commit('health', -5);
+        ctx.commit('hunger', -5);
+        ctx.commit('mood', -5);
+        ctx.commit('dayCounter');
+      }
+    },
+    eatTierFour(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', +5);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.hunger >= 100){
+          ctx.state.character.params.hunger = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    healTierFour(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', +5);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.health >= 100){
+          ctx.state.character.params.health = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    enjoyTierFour(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', +5);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.mood >= 100){
+          ctx.state.character.params.mood = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    workTierFive(ctx){
+      if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
+        alert(({
+          title: "e",
+          button: "e",
+          okButtonText: "e"
+        }));
+      }
+      else{
+        ctx.commit('rub', 50);
+        ctx.commit('health', -5);
+        ctx.commit('hunger', -5);
+        ctx.commit('mood', -5);
+        ctx.commit('dayCounter');
+      }
+    },
+    eatTierFive(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', +5);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.hunger >= 100){
+          ctx.state.character.params.hunger = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    healTierFive(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', +5);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', -1);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.health >= 100){
+          ctx.state.character.params.health = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    enjoyTierFive(ctx){
+      if(ctx.state.character.money.rub >= 10){
+        ctx.commit('rub', -10);
+        ctx.commit('health', -1);
+        ctx.commit('hunger', -1);
+        ctx.commit('mood', +5);
+        ctx.commit('dayCounter');
+        if(ctx.state.character.params.mood >= 100){
+          ctx.state.character.params.mood = 100;
+        };
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
+    },
+    edTierTwo(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('edTierTwo');
+      }
+      else{
+        alert(({
+          title: "денях нет",
+          button: "e",
+          okButtonText: "ладно"
+        }));
+      }
     }
     
-    /* экшоны не должны быть пустыми и вообще я вью-bксом неправильно пользуюсь, но оно работатет */
-  },
+},
   modules: {
 
   }

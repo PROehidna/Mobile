@@ -16,16 +16,16 @@
               <needs-tab></needs-tab>
             </TabViewItem>
 
-            <TabViewItem title="недвижка">
-              <label text="тута еще функционал" />
+            <TabViewItem title="образование">
+              <ed-tab></ed-tab>
             </TabViewItem>
 
-            <TabViewItem title="транспорт">
-              <label text="ОПАЧКИ, ЕЩЕ ОДНА КРИВАЯ ВКЛАДКА В ТЕХНОДЕМКЕ" />
+            <TabViewItem title="недвижимость">
+              <estate-tab></estate-tab>
             </TabViewItem>
 
-            <TabViewItem title="печка">
-              <label text="ОПАЧКИ, ЕЩЕ ОДНА КРИВАЯ ВКЛАДКА В ТЕХНОДЕМКЕ" />
+            <TabViewItem title="траснпорт">
+              <tr-tab></tr-tab>
             </TabViewItem>
             
           </TabView>
@@ -38,10 +38,14 @@
 import {mapGetters, mapActions, mapMutations, mapState} from 'vuex';
 import StatusTab from './StatusTab.vue';
 import WorkTab from './WorkTab.vue';
-import NeedsTab from './NeedsTab.vue'
+import NeedsTab from './NeedsTab.vue';
+import EdTab from './EdTab.vue';
+import EstateTab from './EstateTeb.vue';
+import TrTab from './TrTab.vue'
+
 
 export default {
-  components: { StatusTab, WorkTab, NeedsTab },
+  components: { StatusTab, WorkTab, NeedsTab, EdTab, EstateTab, TrTab },
 
 
 }
