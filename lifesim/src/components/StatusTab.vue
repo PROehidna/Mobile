@@ -5,7 +5,7 @@
       <label class='big-text'>сегодня</label>
       <label  class="big-text">возраст: {{age}}</label>
       <DatePicker isEnabled="false" :day='d' :month='m' :year='y' />
-        <label class='big-text'>рубли: {{rub}} и доллары: {{usd}}</label>
+        <label class='big-text'>рубли: {{rub}}</label>
         <label class='big-text'>здоровье</label>
         <Progress :value="health" maxValue="100"/>
         <label class='big-text'>настроение</label>

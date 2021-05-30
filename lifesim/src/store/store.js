@@ -16,7 +16,6 @@ export default new Vuex.Store({
       },
       money:{
         rub: 50,
-        usd: 0,
       },
       education: {
         tierTwo: false,
@@ -47,9 +46,7 @@ export default new Vuex.Store({
     rub(state) {
       return state.character.money.rub
     },
-    usd(state) {
-      return state.character.money.usd
-    },
+
     health(state) {
       return state.character.params.health
     },
@@ -71,40 +68,40 @@ export default new Vuex.Store({
     y(state){
       return state.date.y
     },
-    edTierTwo(state){
+    edTierTwoGtr(state){
       return state.character.education.tierTwo
     },
-    edTierThree(state){
+    edTierThreeGtr(state){
       return state.character.education.tierThree
     },
-    edTierFour(state){
+    edTierFourGtr(state){
       return state.character.education.tierFour
     },
-    edTierFive(state){
+    edTierFiveGtr(state){
       return state.character.education.tierFive
     },
-    esTierTwo(state){
+    esTierTwoGtr(state){
       return state.character.estate.tierTwo
     },
-    esTierThree(state){
+    esTierThreeGtr(state){
       return state.character.estate.tierThree
     },
-    esTierFour(state){
+    esTierFourGtr(state){
       return state.character.estate.tierFour
     },
-    esTierFive(state){
+    esTierFiveGtr(state){
       return state.character.estate.tierFive
     },
-    tTierTwo(state){
+    tTierTwoGtr(state){
       return state.character.transport.tierTwo
     },
-    tTierThree(state){
+    tTierThreeGtr(state){
       return state.character.transport.tierThree
     },
-    tTierFour(state){
+    tTierFourGtr(state){
       return state.character.transport.tierFour
     },
-    tTierFive(state){
+    tTierFiveGtr(state){
       return state.character.transport.tierFive
     },
   },
@@ -129,10 +126,6 @@ export default new Vuex.Store({
       state.character.estate.tierThree = false;
       state.character.estate.tierFour = false;
       state.character.estate.tierFive = false;
-      state.character.business.tierTwo = false;
-      state.character.business.tierThree = false;
-      state.character.business.tierFour = false;
-      state.character.business.tierFive = false;
       state.date.y = 2010;
       state.date.m = 1;
       state.date.d = 1;
@@ -215,8 +208,8 @@ export default new Vuex.Store({
       }))
     }
   },
-
 //если разберусь как подключить дочерние экшоны к родительскому состоянию - тогда определенно точно все розобью на модули
+// а себе я желаю поскорее научиться работать со входными параметрами, поскольку стопицот однотипных функций - мрак и ужас
   actions: {
     workTierOne(ctx){
       if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
@@ -226,7 +219,7 @@ export default new Vuex.Store({
         ctx.state.character.params.mood = 0;
       }
       else{
-        ctx.commit('rub', 50);
+        ctx.commit('rub', 100);
         ctx.commit('health', -5);
         ctx.commit('hunger', -5);
         ctx.commit('mood', -5);
@@ -235,12 +228,13 @@ export default new Vuex.Store({
     },
     workTierTwo(ctx){
       if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        ctx.commit('alertDeath');te.character.params.health = 0;
+        ctx.commit('alertDeath');
+        ctx.state.character.params.health = 0;
         ctx.state.character.params.hunger = 0;
         ctx.state.character.params.mood = 0;
       }
       else{
-        ctx.commit('rub', 50);
+        ctx.commit('rub', 500);
         ctx.commit('health', -5);
         ctx.commit('hunger', -5);
         ctx.commit('mood', -5);
@@ -255,7 +249,7 @@ export default new Vuex.Store({
         ctx.state.character.params.mood = 0;
       }
       else{
-        ctx.commit('rub', 50);
+        ctx.commit('rub', 1000);
         ctx.commit('health', -5);
         ctx.commit('hunger', -5);
         ctx.commit('mood', -5);
@@ -270,7 +264,7 @@ export default new Vuex.Store({
         ctx.state.character.params.mood = 0;
       }
       else{
-        ctx.commit('rub', 50);
+        ctx.commit('rub', 5000);
         ctx.commit('health', -5);
         ctx.commit('hunger', -5);
         ctx.commit('mood', -5);
@@ -285,7 +279,7 @@ export default new Vuex.Store({
         ctx.state.character.params.mood = 0;
       }
       else{
-        ctx.commit('rub', 50);
+        ctx.commit('rub', 50000);
         ctx.commit('health', -5);
         ctx.commit('hunger', -5);
         ctx.commit('mood', -5);
@@ -309,10 +303,10 @@ export default new Vuex.Store({
       }
     },
     eatTierTwo(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
+      if(ctx.state.character.money.rub >= 50){
+        ctx.commit('rub', -50);
         ctx.commit('health', -1);
-        ctx.commit('hunger', +5);
+        ctx.commit('hunger', +10);
         ctx.commit('mood', -1);
         ctx.commit('dayCounter');
         if(ctx.state.character.params.hunger >= 100){
@@ -325,10 +319,10 @@ export default new Vuex.Store({
       }
     },
     eatTierThree(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
+      if(ctx.state.character.money.rub >= 100){
+        ctx.commit('rub', -100);
         ctx.commit('health', -1);
-        ctx.commit('hunger', +5);
+        ctx.commit('hunger', +25);
         ctx.commit('mood', -1);
         ctx.commit('dayCounter');
         if(ctx.state.character.params.hunger >= 100){
@@ -340,10 +334,10 @@ export default new Vuex.Store({
       }
     },
     eatTierFour(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
+      if(ctx.state.character.money.rub >= 500){
+        ctx.commit('rub', -500);
         ctx.commit('health', -1);
-        ctx.commit('hunger', +5);
+        ctx.commit('hunger', +50);
         ctx.commit('mood', -1);
         ctx.commit('dayCounter');
         if(ctx.state.character.params.hunger >= 100){
@@ -355,10 +349,10 @@ export default new Vuex.Store({
       }
     },
     eatTierFive(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -1000);
         ctx.commit('health', -1);
-        ctx.commit('hunger', +5);
+        ctx.commit('hunger', +100);
         ctx.commit('mood', -1);
         ctx.commit('dayCounter');
         if(ctx.state.character.params.hunger >= 100){
@@ -386,9 +380,9 @@ export default new Vuex.Store({
       }
     },
     healTierTwo(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', +5);
+      if(ctx.state.character.money.rub >= 50){
+        ctx.commit('rub', -50);
+        ctx.commit('health', +10);
         ctx.commit('hunger', -1);
         ctx.commit('mood', -1);
         ctx.commit('dayCounter');
@@ -401,9 +395,9 @@ export default new Vuex.Store({
       }
     },
     healTierThree(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', +5);
+      if(ctx.state.character.money.rub >= 100){
+        ctx.commit('rub', -100);
+        ctx.commit('health', +25);
         ctx.commit('hunger', -1);
         ctx.commit('mood', -1);
         ctx.commit('dayCounter');
@@ -416,9 +410,9 @@ export default new Vuex.Store({
       }
     },
     healTierFour(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', +5);
+      if(ctx.state.character.money.rub >= 500){
+        ctx.commit('rub', -500);
+        ctx.commit('health', +50);
         ctx.commit('hunger', -1);
         ctx.commit('mood', -1);
         ctx.commit('dayCounter');
@@ -431,9 +425,9 @@ export default new Vuex.Store({
       }
     },
     healTierFive(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
-        ctx.commit('health', +5);
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -1000);
+        ctx.commit('health', +100);
         ctx.commit('hunger', -1);
         ctx.commit('mood', -1);
         ctx.commit('dayCounter');
@@ -462,11 +456,11 @@ export default new Vuex.Store({
       }
     }, 
     enjoyTierTwo(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
+      if(ctx.state.character.money.rub >= 50){
+        ctx.commit('rub', -50);
         ctx.commit('health', -1);
         ctx.commit('hunger', -1);
-        ctx.commit('mood', +5);
+        ctx.commit('mood', +10);
         ctx.commit('dayCounter');
         if(ctx.state.character.params.mood >= 100){
           ctx.state.character.params.mood = 100;
@@ -477,11 +471,11 @@ export default new Vuex.Store({
       }
     },
     enjoyTierThree(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
+      if(ctx.state.character.money.rub >= 100){
+        ctx.commit('rub', -100);
         ctx.commit('health', -1);
         ctx.commit('hunger', -1);
-        ctx.commit('mood', +5);
+        ctx.commit('mood', +25);
         ctx.commit('dayCounter');
         if(ctx.state.character.params.mood >= 100){
           ctx.state.character.params.mood = 100;
@@ -492,11 +486,11 @@ export default new Vuex.Store({
       }
     },
     enjoyTierFour(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
+      if(ctx.state.character.money.rub >= 500){
+        ctx.commit('rub', -500);
         ctx.commit('health', -1);
         ctx.commit('hunger', -1);
-        ctx.commit('mood', +5);
+        ctx.commit('mood', +50);
         ctx.commit('dayCounter');
         if(ctx.state.character.params.mood >= 100){
           ctx.state.character.params.mood = 100;
@@ -507,11 +501,11 @@ export default new Vuex.Store({
       }
     },
     enjoyTierFive(ctx){
-      if(ctx.state.character.money.rub >= 10){
-        ctx.commit('rub', -10);
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -1000);
         ctx.commit('health', -1);
         ctx.commit('hunger', -1);
-        ctx.commit('mood', +5);
+        ctx.commit('mood', +100);
         ctx.commit('dayCounter');
         if(ctx.state.character.params.mood >= 100){
           ctx.state.character.params.mood = 100;
@@ -522,36 +516,36 @@ export default new Vuex.Store({
       }
     },
 
-    edTierTwo(ctx){
+    edTierTwoAct(ctx){
       if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
+        ctx.commit('rub', -1000);
         ctx.commit('edTierTwo');
       }
       else{
         ctx.commit('alertRub');
       }
     },
-    edTierThree(ctx){
-      if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
+    edTierThreeAct(ctx){
+      if(ctx.state.character.money.rub >= 50000){
+        ctx.commit('rub', -50000);
         ctx.commit('edTierThree');
       }
       else{
         ctx.commit('alertRub');
       }
     },
-    edTierFour(ctx){
-      if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
+    edTierFourAct(ctx){
+      if(ctx.state.character.money.rub >= 100000){
+        ctx.commit('rub', -100000);
         ctx.commit('edTierFour');
       }
       else{
         ctx.commit('alertRub');
       }
     },
-    edTierFive(ctx){
-      if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
+    edTierFiveAct(ctx){
+      if(ctx.state.character.money.rub >= 500000){
+        ctx.commit('rub', -500000);
         ctx.commit('edTierFive');
       }
       else{
@@ -559,36 +553,36 @@ export default new Vuex.Store({
       }
     },
 
-    esTierTwo(ctx){
+    esTierTwoAct(ctx){
       if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
+        ctx.commit('rub', -1000);
         ctx.commit('esTierTwo');
       }
       else{
         ctx.commit('alertRub');
       }
     },
-    esTierThree(ctx){
-      if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
+    esTierThreeAct(ctx){
+      if(ctx.state.character.money.rub >= 50000){
+        ctx.commit('rub', -50000);
         ctx.commit('esTierThree');
       }
       else{
         ctx.commit('alertRub');
       }
     },
-    esTierFour(ctx){
-      if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
+    esTierFourAct(ctx){
+      if(ctx.state.character.money.rub >= 100000){
+        ctx.commit('rub', -100000);
         ctx.commit('esTierFour');
       }
       else{
         ctx.commit('alertRub');
       }
     },
-    esTierFive(ctx){
-      if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
+    esTierFiveAct(ctx){
+      if(ctx.state.character.money.rub >= 500000){
+        ctx.commit('rub', -500000);
         ctx.commit('esTierFive');
       }
       else{
@@ -596,37 +590,37 @@ export default new Vuex.Store({
       }
     },
 
-    esTierTwo(ctx){
+    trTierTwoAct(ctx){
       if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
-        ctx.commit('edTierTwo');
+        ctx.commit('rub', -1000);
+        ctx.commit('trTierTwo');
       }
       else{
         ctx.commit('alertRub');
       }
     },
-    esTierThree(ctx){
-      if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
-        ctx.commit('edTierTwo');
+    trTierThreeAct(ctx){
+      if(ctx.state.character.money.rub >= 5000){
+        ctx.commit('rub', -5000);
+        ctx.commit('trTierTwo');
       }
       else{
         ctx.commit('alertRub');
       }
     },
-    esTierFour(ctx){
-      if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
-        ctx.commit('edTierTwo');
+    trTierFourAct(ctx){
+      if(ctx.state.character.money.rub >= 100000){
+        ctx.commit('rub', -100000);
+        ctx.commit('trTierTwo');
       }
       else{
         ctx.commit('alertRub');
       }
     },
-    esTierFive(ctx){
-      if(ctx.state.character.money.rub >= 1000){
-        ctx.commit('rub', -10);
-        ctx.commit('edTierTwo');
+    trTierFiveAct(ctx){
+      if(ctx.state.character.money.rub >= 500000){
+        ctx.commit('rub', -500000);
+        ctx.commit('trTierTwo');
       }
       else{
         ctx.commit('alertRub');
@@ -634,6 +628,5 @@ export default new Vuex.Store({
     },
 },
   modules: {
-
   }
 });
