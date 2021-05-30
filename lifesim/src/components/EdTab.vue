@@ -1,6 +1,6 @@
 <template>
 <GridLayout columns='*' rows='30, 50, auto'>
-  <label row='0' class="big-text">ПОУЧИТЬСЯ</label>
+  <label row='0' class="big-text">ПОСЫЧЕВАТЬ</label>
   <GridLayout row='1' columns='*, *, *' rows='20, 30'>
     <label class='text' col='0' row='0'>голод ({{hunger}}/100)</label>
     <Progress width='30%' col='0' row='1' :value="hunger" maxValue="100"/>
@@ -10,10 +10,14 @@
     <Progress width='30%' col='2' row='1' :value="health" maxValue="100"/>
   </GridLayout>
   <StackLayout v-if="hunger>0 || health>0 || mood>0" row='2' width='' orientation='vertical'>
-    <Button class="button" text=">мали учеба" @tap="edTierTwo()"/>
-    <Button class="button" text=">учеба" @tap="edTierThree()"/>
-    <Button class="button" text=">больче учеба" @tap="edTierFour()"/>
-    <Button class="button" text=">оче больче учеба" @tap="edTierFive()"/>
+    <Button v-if="!edTierTwo" class="button" text=">мали учёба" @tap="edTierTwo()"/>
+    <Button v-else isEnabled='false' class="button" text=">мали учёба (изучена)"/>
+    <Button v-if="!edTierThree" class="button" text=">учёба" @tap="edTierThree()"/>
+    <Button v-else isEnabled='false' class="button" text=">учёба (изучена)"/>
+    <Button v-if="!edTierFour" class="button" text=">больче учёба" @tap="edTierFour()"/>
+    <Button v-else isEnabled='false' class="button" text=">больче учёба (изучена)"/>
+    <Button v-if="!edTierFive" class="button" text=">оче больче учёба" @tap="edTierFive()"/>
+    <Button v-else isEnabled='false' class="button" text=">оче больче учёба (изучена)"/>
   </StackLayout>
   <Label textWrap='true' row='2' v-else class="big-text" text='видимо, какой-то из параметров упал слишком настолько низко, что смерть настигла сего аватара'/>
 </GridLayout>
@@ -28,7 +32,7 @@ export default {
       onCloseTap: function(){
         this.$modal.close()
       },
-      ...mapActions(['workTierOne', 'workTierTwo', 'workTierThree', 'workTierFour', 'workTierFive'])
+      ...mapActions(['edTierTwo', 'edTierThree', 'edTierFour', 'edTierFive'])
   }
 }
 </script>

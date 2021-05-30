@@ -34,7 +34,7 @@
 </template>
 
 <script>
-
+import * as application from "@nativescript/core/application";
 import {mapGetters, mapActions, mapMutations, mapState} from 'vuex';
 import StatusTab from './StatusTab.vue';
 import WorkTab from './WorkTab.vue';
@@ -46,7 +46,5 @@ import TrTab from './TrTab.vue'
 
 export default {
   components: { StatusTab, WorkTab, NeedsTab, EdTab, EstateTab, TrTab },
-
-
 }
 </script>

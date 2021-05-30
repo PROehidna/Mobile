@@ -5,8 +5,8 @@
         <StackLayout class="modalForm" width="100% ">
                 <ScrollView orientation="vertical" scrollBarIndicatorVisible="true">
                 <StackLayout orientation="vertical">
-                    <Button class="button" text="o"/>
-                    <Button class="button" text="o"/>
+                    <Button class="button" text="ничего не прикрутил"/>
+                    <Button class="button" text="абсолютно"/>
                     <Button class="button" text="o"/>
                     <Button class="button" text="o"/>
                     <Button class="button" text="o"/>
@@ -29,5 +29,3 @@ export default {
     }
 }
 </script>
-
-<style src="./style.css"></style>

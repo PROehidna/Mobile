@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 const Toast = require('nativescript-toast');
+import * as application from "@nativescript/core/application";
 
 Vue.use(Vuex);
 
@@ -35,12 +36,6 @@ export default new Vuex.Store({
         tierFour: false,
         tierFive: false,
       },
-      business: {
-        tierTwo: false,
-        tierThree: false,
-        tierFour: false,
-        tierFive: false,
-      }
     },
     date: {
       y: 2010,
@@ -99,18 +94,6 @@ export default new Vuex.Store({
     },
     esTierFive(state){
       return state.character.estate.tierFive
-    },
-    bTierTwo(state){
-      return state.character.business.tierTwo
-    },
-    bTierThree(state){
-      return state.character.business.tierThree
-    },
-    bTierFour(state){
-      return state.character.business.tierFour
-    },
-    bTierFive(state){
-      return state.character.business.tierFive
     },
     tTierTwo(state){
       return state.character.transport.tierTwo
@@ -178,6 +161,7 @@ export default new Vuex.Store({
         }
       }
     },
+
     edTierTwo(state){
       state.character.education.tierTwo = true
     },
@@ -191,17 +175,52 @@ export default new Vuex.Store({
       state.character.education.tierFive= true
     },
 
+    esTierTwo(state){
+      state.character.estate.tierTwo = true
+    },
+    esTierThree(state){
+      state.character.estate.tierThree= true
+    },
+    esTierFour(state){
+      state.character.estate.tierFour = true
+    },
+    esTierFive(state){
+      state.character.estate.tierFive= true
+    },
+
+    trTierTwo(state){
+      state.character.transport.tierTwo = true
+    },
+    trTierThree(state){
+      state.character.transport.tierThree= true
+    },
+    trTierFour(state){
+      state.character.transport.tierFour = true
+    },
+    trTierFive(state){
+      state.character.transport.tierFive = true
+    },
+    alertRub(){
+      alert(({
+        title: "денях нет",
+        button: "e",
+        okButtonText: "ладно"
+      }))
+    },
+    alertDeath(){
+      alert(({
+        title: "игра оконочена",
+        button: "ок",
+        okButtonText: "ок"
+      }))
+    }
   },
 
 //если разберусь как подключить дочерние экшоны к родительскому состоянию - тогда определенно точно все розобью на модули
   actions: {
     workTierOne(ctx){
       if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        alert(({
-          title: "игра оконочена",
-          button: "ок",
-          okButtonText: "ок"
-        }));
+        ctx.commit('alertDeath');
         ctx.state.character.params.health = 0;
         ctx.state.character.params.hunger = 0;
         ctx.state.character.params.mood = 0;
@@ -216,12 +235,7 @@ export default new Vuex.Store({
     },
     workTierTwo(ctx){
       if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        alert(({
-          title: "игра оконочена",
-          button: "ок",
-          okButtonText: "ок"
-        }));
-        ctx.state.character.params.health = 0;
+        ctx.commit('alertDeath');te.character.params.health = 0;
         ctx.state.character.params.hunger = 0;
         ctx.state.character.params.mood = 0;
       }
@@ -235,11 +249,7 @@ export default new Vuex.Store({
     },
     workTierThree(ctx){
       if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        alert(({
-          title: "игра оконочена",
-          button: "ок",
-          okButtonText: "ок"
-        }));
+        ctx.commit('alertDeath');
         ctx.state.character.params.health = 0;
         ctx.state.character.params.hunger = 0;
         ctx.state.character.params.mood = 0;
@@ -254,11 +264,7 @@ export default new Vuex.Store({
     },
     workTierFour(ctx){
       if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        alert(({
-          title: "игра оконочена",
-          button: "ок",
-          okButtonText: "ок"
-        }));
+        ctx.commit('alertDeath');
         ctx.state.character.params.health = 0;
         ctx.state.character.params.hunger = 0;
         ctx.state.character.params.mood = 0;
@@ -273,11 +279,7 @@ export default new Vuex.Store({
     },
     workTierFive(ctx){
       if (ctx.state.character.params.health <= 0 || ctx.state.character.params.hunger <= 0|| ctx.state.character.params.mood <=0){
-        alert(({
-          title: "игра оконочена",
-          button: "ок",
-          okButtonText: "ок"
-        }));
+        ctx.commit('alertDeath');
         ctx.state.character.params.health = 0;
         ctx.state.character.params.hunger = 0;
         ctx.state.character.params.mood = 0;
@@ -303,11 +305,7 @@ export default new Vuex.Store({
         }
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     eatTierTwo(ctx){
@@ -322,11 +320,8 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
+
       }
     },
     eatTierThree(ctx){
@@ -341,11 +336,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     eatTierFour(ctx){
@@ -360,11 +351,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     eatTierFive(ctx){
@@ -379,11 +366,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
 
@@ -399,11 +382,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     healTierTwo(ctx){
@@ -418,11 +397,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     healTierThree(ctx){
@@ -437,11 +412,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     healTierFour(ctx){
@@ -456,11 +427,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     healTierFive(ctx){
@@ -475,11 +442,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
 
@@ -495,11 +458,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     }, 
     enjoyTierTwo(ctx){
@@ -514,11 +473,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     enjoyTierThree(ctx){
@@ -533,11 +488,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     enjoyTierFour(ctx){
@@ -552,11 +503,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     enjoyTierFive(ctx){
@@ -571,11 +518,7 @@ export default new Vuex.Store({
         };
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
 
@@ -585,59 +528,110 @@ export default new Vuex.Store({
         ctx.commit('edTierTwo');
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     edTierThree(ctx){
       if(ctx.state.character.money.rub >= 1000){
         ctx.commit('rub', -10);
-        ctx.commit('edTierTwo');
+        ctx.commit('edTierThree');
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     edTierFour(ctx){
       if(ctx.state.character.money.rub >= 1000){
         ctx.commit('rub', -10);
-        ctx.commit('edTierTwo');
+        ctx.commit('edTierFour');
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
     edTierFive(ctx){
       if(ctx.state.character.money.rub >= 1000){
         ctx.commit('rub', -10);
+        ctx.commit('edTierFive');
+      }
+      else{
+        ctx.commit('alertRub');
+      }
+    },
+
+    esTierTwo(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('esTierTwo');
+      }
+      else{
+        ctx.commit('alertRub');
+      }
+    },
+    esTierThree(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('esTierThree');
+      }
+      else{
+        ctx.commit('alertRub');
+      }
+    },
+    esTierFour(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('esTierFour');
+      }
+      else{
+        ctx.commit('alertRub');
+      }
+    },
+    esTierFive(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('esTierFive');
+      }
+      else{
+        ctx.commit('alertRub');
+      }
+    },
+
+    esTierTwo(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
         ctx.commit('edTierTwo');
       }
       else{
-        alert(({
-          title: "денях нет",
-          button: "e",
-          okButtonText: "ладно"
-        }));
+        ctx.commit('alertRub');
       }
     },
-   
-    showRub(ctx){
-      const rubInfo = Toast.makeText('остаток средств ' + ctx.state.character.money.rub + ' рублей', 'short');
-      rubInfo.setDuration(10)
-      
-      rubInfo.show();
-    }
+    esTierThree(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('edTierTwo');
+      }
+      else{
+        ctx.commit('alertRub');
+      }
+    },
+    esTierFour(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('edTierTwo');
+      }
+      else{
+        ctx.commit('alertRub');
+      }
+    },
+    esTierFive(ctx){
+      if(ctx.state.character.money.rub >= 1000){
+        ctx.commit('rub', -10);
+        ctx.commit('edTierTwo');
+      }
+      else{
+        ctx.commit('alertRub');
+      }
+    },
 },
   modules: {
 
