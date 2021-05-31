@@ -1,41 +1,32 @@
 <template>
 <Frame>
-        <Page>
-            <ActionBar title="сап ананасы"/>
-            <TabView :selectedIndex="0">
-
-            <TabViewItem title="статус">
-              <status-tab></status-tab>
-            </TabViewItem>
-
-            <TabViewItem title="работа">
-              <work-tab></work-tab>
-            </TabViewItem>
-
-            <TabViewItem title="потребности">
-              <needs-tab></needs-tab>
-            </TabViewItem>
-
-            <TabViewItem title="образование">
-              <ed-tab></ed-tab>
-            </TabViewItem>
-
-            <TabViewItem title="недвижимость">
-              <estate-tab></estate-tab>
-            </TabViewItem>
-
-            <TabViewItem title="траснпорт">
-              <tr-tab></tr-tab>
-            </TabViewItem>
-            
-          </TabView>
-        </Page>
-        </Frame>
+  <Page>
+      <ActionBar title="сап ананасы"/>
+      <TabView :selectedIndex="0">
+      <TabViewItem title="статус">
+        <status-tab></status-tab>
+      </TabViewItem>
+      <TabViewItem title="работа">
+        <work-tab></work-tab>
+      </TabViewItem>
+      <TabViewItem title="потребности">
+        <needs-tab></needs-tab>
+      </TabViewItem>
+      <TabViewItem title="образование">
+        <ed-tab></ed-tab>
+      </TabViewItem>
+      <TabViewItem title="недвижимость">
+        <estate-tab></estate-tab>
+      </TabViewItem>
+      <TabViewItem title="траснпорт">
+        <tr-tab></tr-tab>
+      </TabViewItem>            
+    </TabView>
+  </Page>
+</Frame>
 </template>
 
 <script>
-import * as application from "@nativescript/core/application";
-import {mapGetters, mapActions, mapMutations, mapState} from 'vuex';
 import StatusTab from './StatusTab.vue';
 import WorkTab from './WorkTab.vue';
 import NeedsTab from './NeedsTab.vue';

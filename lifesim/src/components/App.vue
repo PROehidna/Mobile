@@ -1,7 +1,6 @@
 <template>
     <Page> 
         <ActionBar title="добро пожаловать. снова."/>
-
             <StackLayout>
                 <Button class="button" @tap="startNewGame(), newGameNormal()" text=">новая игра"/>
                 <Button class="button" @tap="startLastSave()" text=">продолжить"/>
@@ -14,14 +13,12 @@
 </template>
 
 <script >
-import {mapGetters, mapActions, mapMutations, mapState} from 'vuex';
-
+import {mapMutations} from 'vuex';
 import Game from './Game';
 import Settings from './Settings';
 import * as application from "@nativescript/core/application";
 
   export default {
-
     methods:{
       ...mapMutations(['newGameNormal']),
       startNewGame: function(event){
@@ -44,7 +41,6 @@ import * as application from "@nativescript/core/application";
           fullscreen: true,
         })
       },
-      
       about() {
         alert(({
           title: "о",
