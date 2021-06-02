@@ -10,7 +10,7 @@
     <Progress width='30%' col='2' row='1' :value="health" maxValue="100"/>
   </GridLayout>
   <StackLayout v-if="hunger>0 || health>0 || mood>0" row='2' width='' orientation='vertical'>
-    <Button class="button" text=">оче мали работа (+100р))" @tap="workTierOne()"/>
+    <Button class="button" text=">оче мали работа (+100р)" @tap="workTierOne()"/>
     <Button v-if='edTierTwoGtr' class="button" text=">мали работа (+500р)" @tap="workTierTwo()"/>
     <Button v-else isEnabled='false' class="button" text=">мали работа (+500р)" @tap="workTierTwo()"/>
     <Button v-if='edTierThreeGtr' class="button" text=">работа (+1000р)" @tap="workTierThree()"/>
