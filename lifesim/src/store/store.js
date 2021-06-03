@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 const Toast = require('nativescript-toast');
 import * as application from "@nativescript/core/application";
+import * as ApplicationSettings from "application-settings";
 
 Vue.use(Vuex);
 
@@ -36,11 +37,12 @@ export default new Vuex.Store({
         tierFive: false,
       },
     },
-    date: {
-      y: 2010,
-      m: 1,
+    date:{
       d: 1,
-    }
+      m: 1,
+      y: 2010,
+    },
+    saves: [],
   },
   getters: {
     rub(state) {
@@ -626,6 +628,25 @@ export default new Vuex.Store({
         ctx.commit('alertRub');
       }
     },
+    newTask (ctx) {
+      ctx.saves.push({
+        id: Math.random(),
+        title: '{{ctx.state.date.d}}.{{ctx.state.date.m}}.{{ctx.state.date.y}}', 
+      });
+      this.save();
+    },
+    save(ctx){
+      let toSave = Object.assign({}, ctx.state.character);
+      ApplicationSettings.setString('saves', JSON.stringify(toSave));
+    },
+    mounted(ctx){
+      if(ApplicationSettings.getString('saves')){
+        ctx.state=Object.values(JSON.parse(ApplicationSettings.getString('saves')));
+      }
+    },
+    load(ctx){
+
+    }
 },
   modules: {
   }

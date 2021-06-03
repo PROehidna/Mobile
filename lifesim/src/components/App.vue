@@ -13,14 +13,17 @@
 </template>
 
 <script >
-import {mapMutations} from 'vuex';
+import {mapMutations,  mapActions } from 'vuex';
 import Game from './Game';
 import Settings from './Settings';
+import Saves from './Saves';
 import * as application from "@nativescript/core/application";
 
   export default {
     methods:{
+      ...mapActions(['mounted']),
       ...mapMutations(['newGameNormal']),
+      mounted(){mounted()},
       startNewGame: function(event){
         this.$showModal(Game, {
           fullscreen: true,
@@ -32,7 +35,7 @@ import * as application from "@nativescript/core/application";
         })  
       },
       starAnySave: function(event){
-        this.$showModal(Game, {
+        this.$showModal(Saves, {
           fullscreen: true,
         })
       },

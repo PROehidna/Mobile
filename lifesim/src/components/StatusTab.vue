@@ -12,7 +12,7 @@
         <Progress :value="mood" maxValue="100"/>
         <label class='big-text'>голод</label>
         <Progress :value="hunger" maxValue="100"/>
-        <Button class="button" @tap="onCloseTap" text=">сохранить (?)" />
+        <Button class="button" @tap="save()" text=">сохранить (?)" />
     </StackLayout>
     </ScrollView>
   </StackLayout>
@@ -27,7 +27,7 @@ export default {
       onCloseTap: function(){
         this.$modal.close()
       },
-      ...mapActions(['workTierOne', 'eatTierOne', 'healTierOne', 'enjoyTierOne']),
+      ...mapActions(['workTierOne', 'eatTierOne', 'healTierOne', 'enjoyTierOne', 'save']),
   }
 }
 </script>
