@@ -2,8 +2,8 @@
   <Page  class="app">
     <StackLayout>
       <FlexboxLayout>
-        <TextField width='80%' class="input" v-model="newText" hint="Введите задачу"  @returnPress="newTask()"/>
-        <Button width='15%' class="btn check-btn" text="+" @tap="newTask()"/>
+        <TextField width='80%' class="input" v-model="newText" hint="write task"  @returnPress="newTask()"/>
+        <Button width='15%' class="btn" text="Add" @tap="newTask()"/>
       </FlexboxLayout>
       <ScrollView orientation="horizontal">
         <ListView width='100%' class="task" for="task in tasks">
@@ -11,8 +11,8 @@
             <GridLayout columns="*, *" rows='*, *'>
             <label  class="task-text done" v-if="task.done" textWrap="true" col='0' row='0' colSpan='2'>{{task.title}}</label>
             <label  class="task-text" v-else  @tap="edit(task.id, task.title)" textWrap="true" col='0' row='0' colSpan="2">{{task.title}}</label>
-            <Button  class="btn check-btn" text="\/" @tap="taskDone(task.id)" row='1' col='0'/>
-            <Button  class="btn remove-btn" text="X" @tap="remove(task.id)" row='1' col='1'/> 
+            <Button  class="btn check-btn" text="✔" @tap="taskDone(task.id)" row='1' col='0'/>
+            <Button  class="btn del-btn" text="✗" @tap="remove(task.id)" row='1' col='1'/> 
             </GridLayout>
           </v-template>
         </ListView>
@@ -90,15 +90,16 @@ export default {
 
 <style scoped>
   .app{
-      background-color: #333333;
+      background-color: #808080;
   }
 
   .task-text{
     margin: 30px 20px;
-    background-color: #424242;
+    background-color: #808080;
     border-radius: 10%;
     color: #000000;
     text-align: center;
+    font-size: 24px;
   }
 
   .done {
@@ -110,6 +111,20 @@ export default {
     background-color: #e27d01;
     border-radius: 10%;
     color: #ffffff;
+    margin: 30px 3px;
+  }
+
+  .del-btn{
+    background-color: #e20101;
+    border-radius: 10%;
+    color: #ffffff;
+    margin: 30px 10px;
+  }
+
+  .check-btn{
+    background-color: #01e214;
+    border-radius: 10%;
+    color: #ffffff;
     margin: 30px 10px;
   }
 
@@ -118,8 +133,9 @@ export default {
   }
 
   .input{
-    background-color: #FF8C00;
+    background-color: #494b47;
     border-radius: 10%;
+    font-size: 18px;
     color: #000000;
     margin: 50px 30px;
     text-align: center;
