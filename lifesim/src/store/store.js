@@ -94,16 +94,16 @@ export default new Vuex.Store({
     esTierFiveGtr(state){
       return state.character.estate.tierFive
     },
-    tTierTwoGtr(state){
+    trTierTwoGtr(state){
       return state.character.transport.tierTwo
     },
-    tTierThreeGtr(state){
+    trTierThreeGtr(state){
       return state.character.transport.tierThree
     },
-    tTierFourGtr(state){
+    trTierFourGtr(state){
       return state.character.transport.tierFour
     },
-    tTierFiveGtr(state){
+    trTierFiveGtr(state){
       return state.character.transport.tierFive
     },
     score(state){

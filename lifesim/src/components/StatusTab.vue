@@ -12,7 +12,6 @@
         <Progress :value="mood" maxValue="100"/>
         <label class='big-text'>голод</label>
         <Progress :value="hunger" maxValue="100"/>
-        <Button class="button" @tap="save()" text=">сохранить (?)" />
     </StackLayout>
     </ScrollView>
   </StackLayout>
