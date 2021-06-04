@@ -3,10 +3,7 @@
         <ActionBar title="добро пожаловать. снова."/>
             <StackLayout>
                 <Button class="button" @tap="startNewGame(), newGameNormal()" text=">новая игра"/>
-                <Button class="button" @tap="startLastSave()" text=">продолжить"/>
-                <Button class="button" @tap="starAnySave()" text=">загрузить игру"/>            
-                <Button class="button" @tap="settings()" text=">настройки"/>
-                <Button class="button" @tap="about()" text=">о"/>
+                <Button class="button" @tap="about()" text=">about"/>
                 <Button class="button" @tap="closeApp()" text=">выход"/>
             </StackLayout>
     </Page>
@@ -29,26 +26,11 @@ import * as application from "@nativescript/core/application";
           fullscreen: true,
         })
       },
-      startLastSave: function(event){
-        this.$showModal(Game, {
-          fullscreen: true,
-        })  
-      },
-      starAnySave: function(event){
-        this.$showModal(Saves, {
-          fullscreen: true,
-        })
-      },
-      settings: function(event){
-        this.$showModal(Settings,{
-          fullscreen: true,
-        })
-      },
       about() {
         alert(({
-          title: "о",
-          button: "о",
-          okButtonText: "о"
+          title: "about",
+          message: "разработал всеволод \"panlukaszgelmintowski\" доронин",
+          okButtonText: "ок"
         }));
       },
       closeApp() {

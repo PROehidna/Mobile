@@ -42,7 +42,7 @@ export default new Vuex.Store({
       m: 1,
       y: 2010,
     },
-    saves: [],
+    score: 0,
   },
   getters: {
     rub(state) {
@@ -106,6 +106,9 @@ export default new Vuex.Store({
     tTierFiveGtr(state){
       return state.character.transport.tierFive
     },
+    score(state){
+      return state.score
+    }
   },
   mutations: {
     /* ненормальные мутации,где меняются все данные в мутации - отвечают за уровни сложности (если сделаю)) */
@@ -144,8 +147,10 @@ export default new Vuex.Store({
     mood(state, a){
       state.character.params.mood += a
     },
+    
     dayCounter(state){
       state.date.d +=1
+      state.score +=1
       if((state.date.d > 31 && (state.date.m == 1 || state.date.m == 3 ||state.date.m == 5 ||state.date.m == 7 ||state.date.m == 8 ||state.date.m == 10 ||state.date.m == 12)) || (state.date.d > 30 && (state.date.m == 4 || state.date.m == 6 || state.date.m == 9 || state.date.m == 11)) || (state.date.m == 2 && ((state.date.d > 29 && state.date.y % 4 == 0) || (state.date.d > 28 && state.date.y %4 !=0 )))) {
         state.date.d = 1;
         state.date.m +=1;

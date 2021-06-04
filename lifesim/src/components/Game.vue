@@ -1,7 +1,9 @@
 <template>
 <Frame>
   <Page>
-      <ActionBar title="сап ананасы"/>
+      <ActionBar>
+        <Label>ДНЕЙ ПРОЖИТО {{score}}</Label>
+      </ActionBar>
       <TabView :selectedIndex="0">
       <TabViewItem title="статус">
         <status-tab></status-tab>
@@ -33,9 +35,10 @@ import NeedsTab from './NeedsTab.vue';
 import EdTab from './EdTab.vue';
 import EstateTab from './EstateTeb.vue';
 import TrTab from './TrTab.vue'
-
+import { mapGetters}  from 'vuex'
 
 export default {
   components: { StatusTab, WorkTab, NeedsTab, EdTab, EstateTab, TrTab },
+  computed: mapGetters(['score']),
 }
 </script>
